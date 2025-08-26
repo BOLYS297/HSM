@@ -11,6 +11,7 @@ require_once 'models/NotificationDB.php';
 require_once 'models/PaiementDB.php';
 require_once 'models/TacheDB.php';
 require_once 'models/UsersDB.php';
+require_once '../storage/paquet.php';
 
 $avisdb= new AvisDB();
 $categoriedb= new CategorieDB();
@@ -22,4 +23,5 @@ $notificationdb= new NotificationDB();
 $paiementdb= new PaiementDB();
 $tachedb= new TacheDB();
 $usersdb= new UsersDB();
+$paquet= new Paquet();
 ?>

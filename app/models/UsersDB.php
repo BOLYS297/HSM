@@ -11,15 +11,15 @@
          $this->tablename = 'users';
          $this->table_id = 'idusers';
       }
-      public function create($iddomaine,$nom,$prenom,$adresse,$latitude,$longitude,$telephone,$email,$password,$role,$statut,$photo,$cni_recto,$cni_verso,$piece) {
-            $sql = "insert into $this->tablename set iddomaine=?, nom=?, prenom=?, adresse=?, latitude=?, longitude=?, telephone=?, email=?, password=?, role=?, statut=?, photo=?, cni_recto=?, cni_verso=?, piece=?";
-            $params = array($iddomaine, $nom, $prenom, $adresse, $latitude, $longitude, $telephone, $email, $password, $role, $statut, $photo, $cni_recto, $cni_verso, $piece);
+      public function create($iddomaine,$nom,$prenom,$adresse,$telephone,$email,$password,$role,$media,$cni,$attestation_cv) {
+            $sql = "insert into $this->tablename set iddomaine=?, nom=?, prenom=?, adresse=?, telephone=?, email=?, password=?, role=?, media=?, cni=?, attestation_cv=?";
+            $params = array($iddomaine, $nom, $prenom, $adresse, $telephone, $email, $password, $role,$media, $cni,$attestation_cv);
             $this->db->prepare($sql, $params); 
       }
-      public function update($id, $iddomaine, $nom, $prenom, $adresse, $latitude, $longitude, $telephone, $email, $password, $role, $statut, $photo, $cni_recto, $cni_verso, $piece) {
-            $sql = "update $this->tablename set iddomaine=?, nom=?, prenom=?, adresse=?, latitude=?, longitude=?, telephone=?, email=?, password=?, role=?, statut=?, photo=?, cni_recto=?, cni_verso=?, piece=? where $this->table_id=?";
+      public function update($id, $iddomaine, $nom, $prenom, $adresse, $telephone, $email, $password, $role, $media, $cni, $attestation_cv) {
+            $sql = "update $this->tablename set iddomaine=?, nom=?, prenom=?, adresse=?, telephone=?, email=?, password=?, role=?, media=?, cni=?, attestation_cv=? where $this->table_id=?";
 
-            $params = array($iddomaine, $nom, $prenom, $adresse, $latitude, $longitude, $telephone, $email, $password, $role, $statut, $photo, $cni_recto, $cni_verso, $piece, $id);
+            $params = array($iddomaine, $nom, $prenom, $adresse, $telephone, $email, $password, $role, $media, $cni, $attestation_cv, $id);
             $this->db->prepare($sql, $params); 
       }  
       public function delete($id) {
@@ -52,6 +52,20 @@ public function search($keyword) {
       $req = $this->db->prepare($sql, $params);
       return $this->db->getDatas($req, false);
      
+    }
+    public function readConnexion2($email, $password) {
+        $datas= $this->readAll();
+        if($datas != null && sizeof($datas)> 0) {
+            foreach($datas as $d) {
+                if($d->email == $email && password_verify($password, $d->password) == true) {
+                    return $d;
+                }
+            }
+            return false;
+        }
+        else {
+            return false;
+        }
     }
 }
 
