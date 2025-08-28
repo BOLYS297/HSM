@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classement des Techniciens</title>
+    <link rel="stylesheet" href="assets/CSS/page de classement.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <header>
+    <nav class="navbar">
+      <!-- Burger menu -->
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="logo">
+        <div class="logo-HSM">
+          <img src="assets/image/logo_HSM_2.png" alt="logo">
+        </div>
+        Home Services <span class="highlight">&nbsp;Maintenance</span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.phpp">Accueil</a></li>
+        <li><a href="domaine.php">Besoin Prestataire</a></li>
+        <li><a href="about us.php">À propos de nous</a></li>
+        <li><a href="page contact.php">Contactez-nous</a></li>
+        <li class="social">
+          <a href="login.php"><i class="fas fa-user"></i></a>
+          <abbr title="recherche et classementtechnicien"><a href="page de classement.php" class="active"><i class="fas fa-search"></i></a></abbr>
+        </li>
+      </ul>
+    </nav>
+  </header>
+    <div class="container">
+
+        <div class="header">
+            <h1>🏆 Classement des Techniciens</h1><br>
+            <p class="subtitle">Découvrez les meilleurs experts en maintenance électronique</p>
+        </div>
+
+        <div class="filters-section">
+
+            <div class="filters-grid">
+
+                <div class="filter-group">
+
+                    <label for="sortBy">Trier par</label>
+
+                    <select id="sortBy">
+                        <option value="stars">Nombre d'étoiles</option>
+                        <option value="experience">Années d'expérience</option>
+                        <option value="interventions">Nombre d'interventions</option>
+                        <option value="distance">Distance (nécessite position)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="serviceFilter">Service spécialisé</label>
+                    <input type="text" id="serviceFilter" placeholder="Rechercher un service...">
+                </div>
+
+                <div class="filter-group">
+                    <label for="locationInput">Votre adresse</label>
+
+                    <div class="search-location">
+                        <input type="text" id="locationInput" placeholder="Entrez votre adresse...">
+                        <button class="btn-locate" onclick="getCurrentLocation()">📍 Ma position</button>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label for="searchTech">Rechercher un technicien</label>
+                    <input type="text" id="searchTech" placeholder="Nom du technicien...">
+                </div>
+
+                <div class="filter-group">
+                    <label for="integrate-tech">Devenir technicien</label>
+                    <a href="">
+                       <button id="integrate-tech">S'inscrire</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="techniciansContainer" class="technicians-grid">
+            <!-- Les techniciens seront générés ici par JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Données des techniciens (simulées)
+
+        const technicians = [
+            {
+                id: 1,
+                name: "Alejandro Beltran",
+                speciality: "Réparation électronique",
+                stars: 4.9,
+                experience: 12,
+                interventions: 847,
+                location: { lat: 48.8566, lng: 2.3522, address: "Douala, PK13" },
+                services: ["Réparation électronique", "Diagnostic électronique"]
+            },
+            {
+                id: 2,
+                name: "Gabriella Suarez",
+                speciality: "Installation électrique",
+                stars: 4.8,
+                experience: 8,
+                interventions: 623,
+                location: { lat: 45.764, lng: 4.8357, address: "Douala, Akwa" },
+                services: ["Installation électrique", "Câblage industriel"]
+            },
+            {
+                id: 3,
+                name: "Ricardo Villégas",
+                speciality: "Maintenance préventive",
+                stars: 4.7,
+                experience: 15,
+                interventions: 1205,
+                location: { lat: 43.2965, lng: 5.3698, address: "Douala, Bonabéri" },
+                services: ["Maintenance préventive", "Automatisation"]
+            },
+            {
+                id: 4,
+                name: "Antonia Guerra",
+                speciality: "Diagnostic électronique",
+                stars: 4.9,
+                experience: 6,
+                interventions: 456,
+                location: { lat: 47.2184, lng: -1.5536, address: "Douala, village" },
+                services: ["Diagnostic électronique", "Réparation électronique"]
+            },
+            {
+                id: 5,
+                name: "David Beltran",
+                speciality: "Automatisation",
+                stars: 4.6,
+                experience: 10,
+                interventions: 789,
+                location: { lat: 43.6047, lng: 1.4442, address: "Douala, New-bell" },
+                services: ["Automatisation", "Câblage industriel"]
+            },
+            {
+                id: 6,
+                name: "Irène Montemar",
+                speciality: "Câblage industriel",
+                stars: 4.8,
+                experience: 9,
+                interventions: 567,
+                location: { lat: 49.4944, lng: 0.1079, address: "Douala, Ndokoti" },
+                services: ["Câblage industriel", "Installation électrique"]
+            },
+            {
+                id: 7,
+                name: "Carlos Mendoza",
+                speciality: "Réparation électronique",
+                stars: 4.5,
+                experience: 7,
+                interventions: 432,
+                location: { lat: 50.6292, lng: 3.0573, address: "Douala, Bonamoussadi" },
+                services: ["Réparation électronique", "Diagnostic électronique"]
+            },
+            {
+                id: 8,
+                name: "Lucia Fernandez",
+                speciality: "Installation électrique",
+                stars: 4.7,
+                experience: 11,
+                interventions: 678,
+                location: { lat: 48.5734, lng: 7.7521, address: "Douala, Deido" },
+                services: ["Installation électrique", "Câblage industriel"]
+            }
+        ];
+
+        let currentUserLocation = null;
+        let filteredTechnicians = [...technicians];
+
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Rayon de la Terre en km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                    Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return R * c;
+        }
+
+        function generateStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+            let starsHTML = '';
+            
+            for (let i = 0; i < fullStars; i++) {
+                starsHTML += '<span class="star">★</span>';
+            }
+            
+            if (hasHalfStar) {
+                starsHTML += '<span class="star">☆</span>';
+            }
+            
+            return starsHTML;
+        }
+
+        function renderTechnicians(techList) {
+            const container = document.getElementById('techniciansContainer');
+            
+            if (techList.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <h3>Aucun technicien trouvé</h3>
+                        <p>Essayez de modifier vos critères de recherche</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = techList.map((tech, index) => {
+                const distance = currentUserLocation ? 
+                    calculateDistance(
+                        currentUserLocation.lat, 
+                        currentUserLocation.lng, 
+                        tech.location.lat, 
+                        tech.location.lng
+                    ) : null;
+
+                return `
+                    <div class="technician-card">
+                        <div class="rank-badge">#${index + 1}</div>
+                        <div class="tech-header">
+                            <div class="tech-avatar">${tech.name.charAt(0).toUpperCase()}</div>
+                            <div class="tech-info">
+                                <h3>${tech.name}</h3>
+                                <div class="tech-speciality">${tech.speciality}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stars">
+                            ${generateStars(tech.stars)}
+                            <span style="margin-left: 8px; color: #cccccc;">${tech.stars}/5</span>
+                        </div>
+                        
+                        <div class="tech-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">${tech.experience}</span>
+                                <span class="stat-label">Années</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">${tech.interventions}</span>
+                                <span class="stat-label">Interventions</span>
+                            </div>
+                        </div>
+                        
+                        <div class="location-badge">
+                            📍 ${tech.location.address}
+                            ${distance ? ` • ${distance.toFixed(1)} km` : ''}
+                        </div>
+                        
+                        <div style="margin-top: 10px; font-size: 0.9rem; color: #00ff88;">
+                            Services: ${tech.services.join(', ')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function sortTechnicians(criteria) {
+            let sorted = [...filteredTechnicians];
+            
+            switch(criteria) {
+                case 'stars':
+                    sorted.sort((a, b) => b.stars - a.stars);
+                    break;
+                case 'experience':
+                    sorted.sort((a, b) => b.experience - a.experience);
+                    break;
+                case 'interventions':
+                    sorted.sort((a, b) => b.interventions - a.interventions);
+                    break;
+                case 'distance':
+                    if (currentUserLocation) {
+                        sorted.sort((a, b) => {
+                            const distanceA = calculateDistance(
+                                currentUserLocation.lat, currentUserLocation.lng,
+                                a.location.lat, a.location.lng
+                            );
+                            const distanceB = calculateDistance(
+                                currentUserLocation.lat, currentUserLocation.lng,
+                                b.location.lat, b.location.lng
+                            );
+                            return distanceA - distanceB;
+                        });
+                    }
+                    break;
+            }
+            
+            renderTechnicians(sorted);
+        }
+
+        function filterTechnicians() {
+            const serviceFilter = document.getElementById('serviceFilter').value.toLowerCase();
+            const searchTech = document.getElementById('searchTech').value.toLowerCase();
+            
+            filteredTechnicians = technicians.filter(tech => {
+                const matchesService = !serviceFilter || tech.services.some(service => 
+                    service.toLowerCase().includes(serviceFilter)
+                );
+                const matchesSearch = !searchTech || tech.name.toLowerCase().includes(searchTech);
+                return matchesService && matchesSearch;
+            });
+            
+            const sortCriteria = document.getElementById('sortBy').value;
+            sortTechnicians(sortCriteria);
+        }
+
+        // Event listeners
+        document.getElementById('sortBy').addEventListener('change', filterTechnicians);
+        document.getElementById('serviceFilter').addEventListener('input', filterTechnicians);
+        document.getElementById('searchTech').addEventListener('input', filterTechnicians);
+        document.getElementById('locationInput').addEventListener('input', (e) => {
+            const coords = e.target.value.split(',');
+            if (coords.length === 2) {
+                const lat = parseFloat(coords[0].trim());
+                const lng = parseFloat(coords[1].trim());
+                if (!isNaN(lat) && !isNaN(lng)) {
+                    currentUserLocation = { lat, lng };
+                    if (document.getElementById('sortBy').value === 'distance') {
+                        filterTechnicians();
+                    }
+                }
+            }
+        });
+
+        // Rendu initial
+        filterTechnicians();
+    </script>
+     <footer>
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand" style="color:#fff"><span>HOME SERVICES</span><span class="highlight">&nbsp;MAINTENANCE</span></a>
+          <p style="margin-top:12px">Plateforme développée par des jeunes 100% camerounais permattant de faciliter les besoins sur place(à domicile ou sur le lieu d'intervention)</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">H</a>
+            <a href="#" aria-label="Twitter">S</a>
+            <a href="#" aria-label="Instagram">M</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">Useful Links</h4>
+          <nav class="footer-links">
+            <a href="about us.php">About us</a>
+            <a href="register.php">Inscription</a>
+            <a href="login.php">Connexion</a>
+            <a href="#">Notice légale</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Support</h4>
+          <nav class="footer-links">
+            <a href="page contact.php">Contact Us</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact information</h4>
+          <div class="footer-links">
+            <span>Douala, CAMEROUN</span>
+            <!--<span>+1(456)657-887, 0215899 12</span>-->
+            <span>dev_project_2025@yahoo.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Copyright © 2025 Agence. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

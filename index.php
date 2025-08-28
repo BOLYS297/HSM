@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accueil</title>
+  <link rel="stylesheet" href="front/assets/CSS/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script defer src="front/assets/Js/script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ====== NAVBAR ====== -->
+  <header>
+    <nav class="navbar">
+      <!-- Burger menu -->
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="logo">
+        <div class="logo-HSM">
+          <img src="front/assets/image/logo_HSM_2.png" alt="logo">
+        </div>
+        Home Services <span class="highlight">&nbsp;Maintenance</span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.php" class="active">Accueil</a></li>
+        <li><a href="front/register.php">Besoin prestataire</a></li>
+        <li><a href="front/about us.php">À propos de nous</a></li>
+        <li><a href="front/page contact.php">Contactez-nous</a></li>
+        <li class="social">
+          <a href="front/login.php"><i class="fas fa-user"></i></a>
+          <abbr title="recherche et classement des technicien(ne)s"><a href="front/page de classement.php"><i class="fas fa-search"></i></a></abbr>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+    <section class="hero" id="about" aria-label="About Hero">
+      <h1>Accueil</h1>
+    </section>
+
+      <div class="pub">
+        <div class="home-pub">
+           <a href="front/register.php"><img src="front/assets/image/domicile.jpg" alt="domicile"></a>
+           <h3>Désormais, faites venir votre prestataire sur place. Et ce partout !</h3>
+         </div>
+         <div class="home-pub">
+          <a href="front/register.php"><img src="front/assets/image/panne.jpg" alt="panne"></a>
+           <h3>De l'électricien au Plombier, votre service sera disponible à domicile !</h3>
+         </div>
+         <div class="home-pub">
+           <a href="front/register.php"><img src="front/assets/image/garantie.jpg" alt="garantie"></a>
+           <h3>Bénéficier d'une garantie. En plus d'un large choix de prestataires !</h3>
+         </div>
+       </div>
+       <!--<p class="subtitle">" Toujours Plus Près De Chez Vous "</p>-->
+      <div class="buttons">
+        <a href="front/register.php" class="btn">Commencer</a>
+        <a href="front/about us.php" class="btn btn-outline">Learn More</a>
+      </div>
+     </div>
+
+  <div class="offre">
+    <p class="logo"> Dernières <span class="highlight">&nbsp;offres</span></p>
+  </div>
+  <div class="container">
+    <!-- Carte exemple -->
+    <div class="card">
+      <h2>Besoin d'un électricien</h2>
+      <p>Notre panneau électrique a explosé et depuis, nous ne sommes plus alimenter. Ce problème ne touche que notre maison.</p>
+      <div class="time">Il y a 2h</div>
+      <div class="location">
+        <i class="fa-solid fa-location-dot localisation"></i>
+        Bonaberi, Grand-Hangar_bloc 7
+      </div>
+      <a href="front/login.php"><button>Postuler</button></a>
+    </div>
+
+    <!-- Duplique autant de cartes que nécessaire -->
+    <div class="card">
+      <h2>Besoin d'un chef de chantier</h2>
+      <p>Nous recrutons un manoeuvre très expérimenté ayant déjà plusieurs projets à son actif.</p>
+      <div class="time">Il y a 4h</div>
+      <div class="location">
+        <i class="fa-solid fa-location-dot localisation "></i>
+        Deido, Axe lourd Bonateki
+      </div>
+      <a href="front/login.php"><button>Postuler</button></a>
+    </div>
+
+    <!-- Ajoute d'autres annonces identiques -->
+  </div>
+
+
+  <footer>
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand" style="color:#fff"><span>HOME SERVICES</span><span class="highlight">&nbsp;MAINTENANCE</span></a>
+          <p style="margin-top:12px">Plateforme développée par des jeunes 100% camerounais permattant de faciliter les besoins sur place(à domicile ou sur le lieu d'intervention)</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">H</a>
+            <a href="#" aria-label="Twitter">S</a>
+            <a href="#" aria-label="Instagram">M</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">Useful Links</h4>
+          <nav class="footer-links">
+            <a href="front/about us.php">About us</a>
+            <a href="front/register.php">Inscription</a>
+            <a href="front/login.php">Connexion</a>
+            <a href="#">Notice légale</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Support</h4>
+          <nav class="footer-links">
+            <a href="front/page contact.php">Contact Us</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact information</h4>
+          <div class="footer-links">
+            <span>Douala, CAMEROUN</span>
+            <!--<span>+1(456)657-887, 0215899 12</span>-->
+            <span>dev_project_2025@yahoo.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Copyright © 2025 Agence. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

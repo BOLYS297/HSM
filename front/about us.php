@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets\CSS\about us.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+   <!-- ====== NAVBAR ====== -->
+  <header>
+    <nav class="navbar">
+      <!-- Burger menu -->
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="logo">
+        <div class="logo-HSM">
+          <img src="assets/image/logo_HSM_2.png" alt="logo">
+        </div>
+        Home Services <span class="highlight">&nbsp;Maintenance</span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.php">Accueil</a></li>
+        <li><a href="domaine.php">Besoin Prestataire</a></li>
+        <li><a href="about us.php" class="active">À propos de nous</a></li>
+        <li><a href="page contact.php">Contactez-nous</a></li>
+        <li class="social">
+          <a href="login.php"><i class="fas fa-user"></i></a>
+          <abbr title="recherche et classement des technicien(ne)s"><a href="page de classement.php"><i class="fas fa-search"></i></a></abbr>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <main>
+    <div class="spacer" aria-hidden="true"></div>
+    <section class="hero" id="about" aria-label="About Hero">
+      <h1>About us</h1>
+    </section>
+
+    <section class="intro">
+      <div class="container">
+        <div class="grid-3">
+          <div>
+            <span class="eyebrow">About us</span>
+            <h2><span class="accent">Introduction</span>&nbsp;Au Groupe<br> HS Maintenance!</h2>
+            <div class="features">
+              <article class="feature">
+                <div class="icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2 2 7l10 5 10-5-10-5Zm0 20-10-5V9l10 5 10-5v8l-10 5Z" fill="green"/></svg>
+                </div>
+                <div>
+                  <h4>Garantie Sous 24h</h4>
+                  <small>Selon le tâche et le domaine touché, une garantie de plus au moins 24h lui sera attribuer afin de prévoir les éventuels problèmes immédiats.(Après usage)</small>
+                </div>
+              </article>
+              <article class="feature">
+                <div class="icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h18v2H3V3Zm0 6h18v2H3V9Zm0 6h18v2H3v-2Zm0 6h18v2H3v-2Z" fill="green"/></svg>
+                </div>
+                <div>
+                  <h4>Récolte De Données</h4>
+                  <small>Grâce à la plateforme, il sera possible de fournir des statistiques sur les besoins au quotidien les plus sollicités.</small>
+                </div>
+              </article>
+              <article class="feature">
+                <div class="icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.4 0-8 2.2-8 5v3h16v-3c0-2.8-3.6-5-8-5Z" fill="green"/></svg>
+                </div>
+                <div>
+                  <h4>Équipe Jeune Et Dynamique</h4>
+                  <small>Constituer de jeunes 100% Camerounais, notre équipe de développement en plein essort, saura apporter la fraicheur nécessaire à la réalisation d'autres projets.</small>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div>
+            <p>HSM [Home Services Maintenance] est un site web permettant de faciliter la vie au quotidien en permettant au usagers, tels qu'ils soient, d'appeler des services de nature divers et le tout à domicile.</p>
+            <p>Désormais, plus besoin de chercher pour obtenir de l'aide(électricien, plombier ou autre)...car HSM vous proposera une large gamme de prestataires classés et professionnels.</p>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="media-strip">
+          <div class="media-card">
+            <img alt="People working" src="assets\image\us2.jpg" />
+          </div>
+          <div class="media-card video">
+            <img alt="girl learning with his teacher" src="assets\image\us3.jpg" />
+            <div class="play-btn" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7L8 5Z" fill="#fff"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Notre Équipe</span>
+          <h3><span class="accent">Équipe de</span>&nbsp;Développeurs</h3>
+        </div>
+        <p class="section-desc">Jeune et 100% camerounaise. Notre équipe est récente et se multiplie de plus en plus dans les projets full-stacks. Bien structurer, nous sommes ouvert à de nouveaux défis.</p>
+
+        <div class="members">
+          <!-- Member 1 -->
+          <article class="member">
+            <div class="avatar">
+              <img alt="bolys" src="assets\image\bolys.jpg" />
+            </div>
+            <div class="badge">SOP TIWA Bolys <span class="role">Développeur full-stacks</span></div>
+            <div class="actions">
+              <a class="icon-btn" href="#" aria-label="Facebook">H</a>
+              <a class="icon-btn" href="#" aria-label="Twitter">S</a>
+              <a class="icon-btn" href="#" aria-label="Instagram">M</a>
+            </div>
+          </article>
+
+          <!-- Member 2 -->
+          <article class="member">
+            <div class="avatar">
+              <img alt="mbenda" src="assets\image\dorcel.png" />
+            </div>
+            <div class="badge">MBENDA SAHA Dorcel<br><span class="role">Développeur full-stacks</span></div>
+            <div class="actions">
+              <a class="icon-btn" href="#">H</a>
+              <a class="icon-btn" href="#">S</a>
+              <a class="icon-btn" href="#">M</a>
+            </div>
+          </article>
+
+          <!-- Member 3 -->
+          <article class="member">
+            <div class="avatar">
+              <img alt="Johan" src="assets\image\johan.jpg" />
+            </div>
+            <div class="badge">BIYO Johan Xavier <span class="role">Développeur full-stacks</span></div>
+            <div class="actions">
+              <a class="icon-btn" href="#">H</a>
+              <a class="icon-btn" href="#">S</a>
+              <a class="icon-btn" href="#">M</a>
+            </div>
+          </article>
+
+          <!-- Member 4 -->
+          <article class="member">
+            <div class="avatar">
+              <img alt="ariane" src="assets\image\ariane.jpg" />
+            </div>
+            <div class="badge">MBOTCHA NGASSA Ariane<br><span class="role">Développeuse full-stacks</span></div>
+            <div class="actions">
+              <a class="icon-btn" href="#">H</a>
+              <a class="icon-btn" href="#">S</a>
+              <a class="icon-btn" href="#">M</a>
+            </div>
+          </article>
+        </div>
+        <div class="members">
+          <!-- Member 5 -->
+          <article class="member">
+            <div class="avatar">
+              <img alt="prince" src="assets\image\prince.jpg" />
+            </div>
+            <div class="badge">TCHUISSEU Prince Derlich<br><span class="role">Développeur full-stacks</span></div>
+            <div class="actions">
+              <a class="icon-btn" href="#" aria-label="Facebook">H</a>
+              <a class="icon-btn" href="#" aria-label="Twitter">S</a>
+              <a class="icon-btn" href="#" aria-label="Instagram">M</a>
+            </div>
+          </article>
+
+          <!-- Member 6 -->
+          <article class="member">
+            <div class="avatar">
+              <img alt="marlyse" src="assets\image\marlyse.jpg" />
+            </div>
+            <div class="badge">MAHOP Marlyse<br><span class="role">Développeur full-stacks</span></div>
+            <div class="actions">
+              <a class="icon-btn" href="#">H</a>
+              <a class="icon-btn" href="#">S</a>
+              <a class="icon-btn" href="#">M</a>
+            </div>
+          </article>
+
+          <!-- Member 7 -->
+          <article class="member">
+            <div class="avatar">
+              <img alt="alexia" src="assets\image\alexia.jpg" />
+            </div>
+            <div class="badge">NGANOU Alexia Aurelle <span class="role">Développeur full-stacks</span></div>
+            <div class="actions">
+              <a class="icon-btn" href="#">H</a>
+              <a class="icon-btn" href="#">S</a>
+              <a class="icon-btn" href="#">M</a>
+            </div>
+          </article>
+
+          <!-- Member 8 -->
+          <article class="member">
+            <div class="avatar">
+              <img alt="bénédicte" src="assets\image\bénédicte.jpg" />
+            </div>
+            <div class="badge">MAIROUSGOU Bénédicte<br><span class="role">Développeuse full-stacks</span></div>
+            <div class="actions">
+              <a class="icon-btn" href="#">H</a>
+              <a class="icon-btn" href="#">S</a>
+              <a class="icon-btn" href="#">M</a>
+            </div>
+          </article>
+        </div>
+        <div class="members">
+         <!-- Member 9 -->
+          <article class="member">
+            <div class="avatar">
+              <img alt="paix" src="assets\image\paix.jpg" />
+            </div>
+            <div class="badge">BAYAM La Paix<br><span class="role">Développeur full-stacks</span></div>
+            <div class="actions">
+              <a class="icon-btn" href="#">H</a>
+              <a class="icon-btn" href="#">S</a>
+              <a class="icon-btn" href="#">M</a>
+            </div>
+          </article>
+
+          <!-- Member 10 -->
+          <article class="member">
+            <div class="avatar">
+              <img alt="roony" src="assets\image\roony.jpg" />
+            </div>
+            <div class="badge">DJOUMESSI TABET Roony<br><span class="role">Développeur full-stacks</span></div>
+            <div class="actions">
+              <a class="icon-btn" href="#">H</a>
+              <a class="icon-btn" href="#">S</a>
+              <a class="icon-btn" href="#">M</a>
+            </div>
+          </article>
+
+          <!-- Member 11 -->
+          <article class="member">
+            <div class="avatar">
+              <img alt="samanta" src="assets\image\samanta.jpg" />
+            </div>
+            <div class="badge">BIFECK Samanta<br><span class="role">Développeuse full-stacks</span></div>
+            <div class="actions">
+              <a class="icon-btn" href="#">H</a>
+              <a class="icon-btn" href="#">S</a>
+              <a class="icon-btn" href="#">M</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+ <footer>
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand" style="color:#fff"><span>HOME SERVICES</span><span class="highlight">&nbsp;MAINTENANCE</span></a>
+          <p style="margin-top:12px">Plateforme développée par des jeunes 100% camerounais permattant de faciliter les besoins sur place(à domicile ou sur le lieu d'intervention)</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">H</a>
+            <a href="#" aria-label="Twitter">S</a>
+            <a href="#" aria-label="Instagram">M</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">Useful Links</h4>
+          <nav class="footer-links">
+            <a href="about us.php">About us</a>
+            <a href="register.php">Inscription</a>
+            <a href="login.php">Connexion</a>
+            <a href="#">Notice légale</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Support</h4>
+          <nav class="footer-links">
+            <a href="page contact.php">Contact Us</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact information</h4>
+          <div class="footer-links">
+            <span>Douala, CAMEROUN</span>
+            <!--<span>+1(456)657-887, 0215899 12</span>-->
+            <span>dev_project_2025@yahoo.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Copyright © 2025 Agence. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

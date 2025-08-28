@@ -1,5 +1,5 @@
 <?php
-class paquet {
+class Paquet {
     public function __construct() {
     }
 

@@ -11,14 +11,14 @@
          $this->tablename = 'frais';
          $this->table_id = 'idfrais';
       }
-      public function create($iddevis,$idcategorie,$montant){
-            $sql = "insert into $this->tablename set iddevis=?, idcategorie=?, montant=?";
-            $params = array( $iddevis,$idcategorie,$montant);
+      public function create($iddevis,$montant,$intitule){
+            $sql = "insert into $this->tablename set iddevis=?, montant=?,intitule=?";
+            $params = array( $iddevis,$montant,$intitule);
             $this->db->prepare($sql, $params);
       }
-      public function update($id, $iddevis,$idcategorie,$montant) {
-         $sql="update $this->tablename set idtache=?, idmode=?, motif=?, montant=? where $this->table_id=?";
-         $params=array($iddevis,$idcategorie,$montant,$id);
+      public function update($id, $iddevis,$montant,$intitule) {
+         $sql="update $this->tablename set iddevis=?, montant=?, intitule=? where $this->table_id=?";
+         $params=array($iddevis,$montant,$intitule,$id);
          $this->db->prepare($sql, $params); 
       }
       public function delete($id) {

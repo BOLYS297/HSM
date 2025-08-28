@@ -9,17 +9,17 @@
       public function __construct() {
          $this->db = new Connexion();
          $this->tablename = 'users';
-         $this->table_id = 'idusers';
+         $this->table_id = 'iduser';
       }
-      public function create($iddomaine,$nom,$prenom,$adresse,$telephone,$email,$password,$role,$media,$cni,$attestation_cv) {
-            $sql = "insert into $this->tablename set iddomaine=?, nom=?, prenom=?, adresse=?, telephone=?, email=?, password=?, role=?, media=?, cni=?, attestation_cv=?";
-            $params = array($iddomaine, $nom, $prenom, $adresse, $telephone, $email, $password, $role,$media, $cni,$attestation_cv);
+      public function create($nom_complet,$email,$telephone,$adresse,$cni,$profil,$role,$password,$domaine_tech,$attestation_cv) {
+            $sql = "insert into $this->tablename set nom_complet=?, email=?, telephone=?, adresse=?, cni=?, profil=?, role=?, password=?, domaine_tech=?, attestation_cv=?";
+            $params = array($nom_complet,$email,$telephone,$adresse,$cni,$profil,$role,$password,$domaine_tech,$attestation_cv);
             $this->db->prepare($sql, $params); 
       }
-      public function update($id, $iddomaine, $nom, $prenom, $adresse, $telephone, $email, $password, $role, $media, $cni, $attestation_cv) {
-            $sql = "update $this->tablename set iddomaine=?, nom=?, prenom=?, adresse=?, telephone=?, email=?, password=?, role=?, media=?, cni=?, attestation_cv=? where $this->table_id=?";
+      public function update($id, $nom_complet,$email,$telephone,$adresse,$cni,$profil,$role,$password,$domaine_tech,$attestation_cv) {
+            $sql = "update $this->tablename set nom_complet=?, email=?, telephone=?, adresse=?, cni=?, profil=?, role=?, password=?, domaine_tech=?, attestation_cv=? where $this->table_id=?";
 
-            $params = array($iddomaine, $nom, $prenom, $adresse, $telephone, $email, $password, $role, $media, $cni, $attestation_cv, $id);
+            $params = array($nom_complet,$email,$telephone,$adresse,$cni,$profil,$role,$password,$domaine_tech,$attestation_cv, $id);
             $this->db->prepare($sql, $params); 
       }  
       public function delete($id) {

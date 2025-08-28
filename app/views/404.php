@@ -1,11 +1,14 @@
-<div id="op">
-    <div class="oop">
-        <img src="assets/images/po.jpg" alt=""  id="op_img">
-        <h1 id="oops">Ooops!</h1>
-    </div>
 
-    <h3 id="op_h3">404-PAGE NOT FOUND</h3>
-    <h5 id="op_h5">The page you are looking for might removed <br>
-        had its name changed or is temporarity unavailable </h5>
-    <button id="btnx"> <a href="index.php?view=dashboard">GO TO HOMEPAGE</a> </button>
-</div>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- 404 Error Text -->
+                    <div class="text-center">
+                        <div class="error mx-auto" data-text="404">404</div>
+                        <p class="lead text-gray-800 mb-5">Page Not Found</p>
+                        <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
+                        <a href="index.php?view=dashboard">&larr; Back to Dashboard</a>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->

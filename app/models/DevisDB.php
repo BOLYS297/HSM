@@ -13,12 +13,12 @@
       }
       public function create($idtache,$diagnostic,$materiels,$main_oeuvre,$date_debut,$date_fin,$duree){
             $sql = "insert into $this->tablename set idtache=?,diagnostic=?, materiels=?,main_oeuvre=?,date_debut=?,date_fin=?, duree=?";
-            $params = array($idtache,$diagnostic,$materiels,$date_debut,$date_fin,$duree);
+            $params = array($idtache,$diagnostic,$materiels,$main_oeuvre,$date_debut,$date_fin,$duree);
             $this->db->prepare($sql, $params);
       }
       public function update($id,$idtache,$diagnostic,$materiels,$main_oeuvre,$date_debut,$date_fin,$duree) {
          $sql="update $this->tablename set idtache=?,diagnostic=?,materiels=?,main_oeuvre=?,date_debut=?,date_fin=?, duree=? where $this->table_id=?";
-         $params=array($idtache,$diagnostic,$materiels,$date_debut,$date_fin,$duree,$id);
+         $params=array($idtache,$diagnostic,$materiels,$main_oeuvre,$date_debut,$date_fin,$duree,$id);
          $this->db->prepare($sql, $params); 
       }
       public function delete($id) {

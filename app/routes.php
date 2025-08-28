@@ -2,16 +2,14 @@
 // Mapping des vues
 $folder_views = "views";
 $views = array(
-    "avis" => "$folder_views/avis.php",
-    "categorie" => "$folder_views/categorie.php",
-    "devis" => "$folder_views/devis.php",
-    "domaine" => "$folder_views/domaine.php",
-    "frais" => "$folder_views/frais.php",
-    "mode" => "$folder_views/mode.php",
-    "notification" => "$folder_views/notification.php",
+    "dashboard" => "$folder_views/dashboard.php",
+    "user" => "$folder_views/users.php",
     "paiement" => "$folder_views/paiement.php",
     "tache" => "$folder_views/tache.php",
-    "users" => "$folder_views/users.php"
+    "devis" => "$folder_views/devis.php",
+    "avis" => "$folder_views/avis.php",
+    "notification" => "$folder_views/notification.php",
+    "frais" => "$folder_views/frais.php", 
 );
 
 
@@ -23,5 +21,5 @@ if (isset($_GET['view']) == true) {
         $view = "$folder_views/404.php";
     }
 } else {
-    header("Location:../index.php");
+    header("Location:../index.phpp");
 }
