@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de profil de l'utilisateur</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/CSS/page profil utilisateur.css">
+</head>
+<body>
+    <header>
+    <nav class="navbar">
+      <!-- Burger menu -->
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="logo">
+        <div class="logo-HSM">
+          <img src="assets/image/logo_HSM_2.png" alt="logo">
+        </div>
+        Home Services <span class="highlight">&nbsp;Maintenance</span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="domaine.html">Besoin Prestataire</a></li>
+        <li><a href="création tâche.html">Créer une tâche</a></li>
+        <li><a href="about us.html">À propos de nous</a></li>
+        <li><a href="page contact.html">Contactez-nous</a></li>
+        <li><a href="page d'avis.html">Avis et commentaires</a></li>
+        <li class="social">
+          <a href="login.html" class="actve"><i class="fas fa-user"></i></a>
+          <abbr title="recherche et classement des technicien(ne)s"><a href="page de classement.html"><i class="fas fa-search"></i></a></abbr>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+    <main class="account-page">
+
+        <div class="account-container">
+            
+            <section class="profile-section">
+                <h2><i class="fas fa-id-card"></i> Mon Profil</h2>
+                
+                <div class="profile-header">
+
+                    <div class="avatar-upload">
+
+                        <div class="avatar-preview" id="avatar-preview">
+                            <img src="assets\image\wallpaper.jpg" alt="Photo de profil" id="profile-avatar">
+                        </div>
+
+                        <div class="avatar-actions">
+
+                            <input type="file" id="avatar-upload" accept="image/*">
+
+                            <label for="avatar-upload" class="upload-btn">
+                                <i class="fas fa-camera"></i> Changer
+                            </label>
+
+                            <button id="remove-avatar" class="remove-btn">
+                                <i class="fas fa-trash"></i> Supprimer
+                            </button>
+
+                        </div>
+                    </div>
+                    
+                    <div class="profile-info">
+
+                        <h3 id="user-name">...</h3>
+                        <p id="user-email">...@gmail</p>
+                        <p class="member-since">Membre depuis : <span id="join-date">...</span></p>
+
+                    </div>
+                </div>
+                
+                <form class="profile-form" id="profile-form">
+
+                    <div class="form-group">
+                        <label for="fullname">Nom complet</label>
+                        <input type="text" id="fullname" value="Jean Dupont" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" value="+237 XX XX XX XX">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Adresse</label>
+                        <textarea id="address" rows="3">...</textarea>
+                    </div>
+                    
+                    <button type="submit" class="save-btn">
+                        <i class="fas fa-save"></i> Enregistrer
+                    </button>
+                </form>
+            </section>
+
+            <div class="secondary-sections">
+                
+                <section class="orders-section">
+
+                    <h2><i class="fas fa-history"></i> Mes services</h2>
+
+                    <div class="orders-list">
+
+                        <div class="order-card">
+
+                            <div class="order-header">
+                                <span class="order-id">CMD-2024-0567</span>
+                                <span class="order-date">10/03/2025</span>
+                                <span class="order-status delivered">Terminer</span>
+                            </div>
+
+                            <div class="order-details">
+
+                                <div class="order-items">
+                                    <span>Réparation d'un ordinateur hp cor i7</span>
+                                    <span class="order-total">25 000 FCFA</span>
+                                </div>
+
+                                <a href="#" class="order-detail-link">
+                                    <i class="fas fa-search"></i> Détails
+                                </a>
+
+                            </div>
+
+                        </div>
+                        
+                        <div class="order-card">
+                            <div class="order-header">
+                                <span class="order-id">CMD-2025-0423</span>
+                                <span class="order-date">28/04/2025</span>
+                                <span class="order-status shipping">En cours</span>
+                            </div>
+                            <div class="order-details">
+                                <div class="order-items">
+                                    <span>Réparation d'un frigo</span>
+                                    <span class="order-total">12 000 FCFA</span>
+                                </div>
+                                <a href="#" class="order-detail-link">
+                                    <i class="fas fa-search"></i> Détails
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="orders.html" class="see-all">Voir tous mes services →</a>
+                </section>
+
+                <section class="settings-section">
+
+                    <h2><i class="fas fa-cog"></i> Paramètres</h2>
+
+                    <ul class="settings-list">
+
+                        <li>
+                            <a href="change-password.html">
+                                <i class="fas fa-lock"></i> Changer le mot de passe
+                            </a>
+                        </li>
+                        <li>
+                            <a href="notifications.html">
+                                <i class="fas fa-bell"></i> Préférences de notifications
+                            </a>
+                        </li>
+                        <li>
+                            <a href="payment-methods.html">
+                                <i class="fas fa-credit-card"></i> Moyens de paiement
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i> Déconnexion
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="confirmation-modal">
+        
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title">Titre de la modal</h3>
+            <p id="modal-message">Message de confirmation</p>
+            <div class="modal-buttons">
+                <button id="modal-cancel">Annuler</button>
+                <button id="modal-confirm">Confirmer</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    // Éléments du DOM
+    const avatarUpload = document.getElementById('avatar-upload');
+    const avatarPreview = document.getElementById('profile-avatar');
+    const removeAvatarBtn = document.getElementById('remove-avatar');
+    const profileForm = document.getElementById('profile-form');
+    const logoutBtn = document.getElementById('logout-btn');
+    const modal = document.getElementById('confirmation-modal');
+    const closeModalBtn = document.querySelector('.close-modal');
+    const modalCancelBtn = document.getElementById('modal-cancel');
+    const modalConfirmBtn = document.getElementById('modal-confirm');
+
+    // Charger les données utilisateur
+    function loadUserData() {
+        // En pratique, vous récupéreriez ces données depuis votre backend
+        const userData = JSON.parse(localStorage.getItem('userData')) || {
+            name: 'Jean Dupont',
+            email: 'jean.dupont@email.com',
+            joinDate: '15 mars 2024',
+            phone: '+225 XX XX XX XX',
+            address: '123 Rue de l\'École, Abidjan',
+            avatar: 'images/default-avatar.jpg'
+        };
+
+        // Remplir les champs
+        document.getElementById('user-name').textContent = userData.name;
+        document.getElementById('user-email').textContent = userData.email;
+        document.getElementById('join-date').textContent = userData.joinDate;
+        document.getElementById('fullname').value = userData.name;
+        document.getElementById('phone').value = userData.phone;
+        document.getElementById('address').value = userData.address;
+        avatarPreview.src = userData.avatar;
+    }
+
+    // Gestion de l'upload d'avatar
+    avatarUpload.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                avatarPreview.src = event.target.result;
+                // En pratique, vous enverriez l'image au serveur ici
+                const userData = JSON.parse(localStorage.getItem('userData')) || {};
+                userData.avatar = event.target.result;
+                localStorage.setItem('userData', JSON.stringify(userData));
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Suppression de l'avatar
+    removeAvatarBtn.addEventListener('click', function() {
+        avatarPreview.src = 'images/default-avatar.jpg';
+        // En pratique, vous supprimeriez aussi l'avatar côté serveur
+        const userData = JSON.parse(localStorage.getItem('userData')) || {};
+        userData.avatar = 'images/default-avatar.jpg';
+        localStorage.setItem('userData', JSON.stringify(userData));
+    });
+
+    // Enregistrement du profil
+    profileForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const userData = JSON.parse(localStorage.getItem('userData')) || {};
+        userData.name = document.getElementById('fullname').value;
+        userData.phone = document.getElementById('phone').value;
+        userData.address = document.getElementById('address').value;
+        
+        localStorage.setItem('userData', JSON.stringify(userData));
+        
+        // Mise à jour de l'affichage
+        document.getElementById('user-name').textContent = userData.name;
+        
+        // Message de confirmation
+        showModal('Profil mis à jour', 'Vos modifications ont été enregistrées avec succès.', false);
+    });
+
+    // Déconnexion
+    logoutBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        showModal(
+            'Déconnexion', 
+            'Êtes-vous sûr de vouloir vous déconnecter ?', 
+            true,
+            () => {
+                localStorage.removeItem('userLoggedIn');
+                window.location.href = 'login.html';
+            }
+        );
+    });
+
+    // Gestion de la modal
+    function showModal(title, message, showButtons, confirmCallback) {
+        document.getElementById('modal-title').textContent = title;
+        document.getElementById('modal-message').textContent = message;
+        
+        const modalButtons = document.querySelector('.modal-buttons');
+        modalButtons.style.display = showButtons ? 'flex' : 'none';
+        
+        modal.style.display = 'flex';
+        
+        if (confirmCallback) {
+            modalConfirmBtn.onclick = function() {
+                confirmCallback();
+                modal.style.display = 'none';
+            };
+        } else {
+            modalConfirmBtn.onclick = function() {
+                modal.style.display = 'none';
+            };
+        }
+    }
+
+    // Fermeture de la modal
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    modalCancelBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Initialisation
+    loadUserData();
+});
+
+
+// Exemple de requête API pour sauvegarder le profil
+async function saveProfile(data) {
+    const response = await fetch('/api/profile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        body: JSON.stringify(data)
+    });
+    return response.json();
+}
+    </script>
+     <footer>
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand" style="color:#fff"><span>HOME SERVICES</span><span class="highlight">&nbsp;MAINTENANCE</span></a>
+          <p style="margin-top:12px">Plateforme développée par des jeunes 100% camerounais permattant de faciliter les besoins sur place(à domicile ou sur le lieu d'intervention)</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">H</a>
+            <a href="#" aria-label="Twitter">S</a>
+            <a href="#" aria-label="Instagram">M</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">Useful Links</h4>
+          <nav class="footer-links">
+            <a href="about us.html">About us</a>
+            <a href="register.html">Inscription</a>
+            <a href="login.html">Connexion</a>
+            <a href="#">Notice légale</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Support</h4>
+          <nav class="footer-links">
+            <a href="page contact.html">Contact Us</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact information</h4>
+          <div class="footer-links">
+            <span>Douala, CAMEROUN</span>
+            <!--<span>+1(456)657-887, 0215899 12</span>-->
+            <span>dev_project_2025@yahoo.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Copyright © 2025 Agence. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domaine d'application</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="assets\CSS\domaine.css">
+</head>
+<body>
+   <header>
+    <nav class="navbar">
+      <!-- Burger menu -->
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="logo">
+        <div class="logo-HSM">
+          <img src="assets/image/logo_HSM_2.png" alt="logo">
+        </div>
+        Home Services <span class="highlight">&nbsp;Maintenance</span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="register.html">Besoin prestataire</a></li>
+        <li><a href="about us.html">À propos de nous</a></li>
+        <li><a href="page contact.html">Contactez-nous</a></li>
+        <li class="social">
+          <a href="login.html"><i class="fas fa-user"></i></a>
+          <abbr title="recherche et classement des technicien(ne)s"><a href="page de classement.html"><i class="fas fa-search"></i></a></abbr>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container-dom">
+    <div class="form-section">
+      <img src="assets\image\logo_HSM_2.png" alt="Logo" class="logo">
+      <h2>Inscription-Prestataire</h2>
+
+      <a href="register.html">
+      <div class="user-btn">
+        <i class="fas fa-user"></i>
+        Revenir en tant que client
+      </div>
+      </a>
+
+      <div class="divider">Ou Finaliser l'inscription</div>
+      <form>
+        <div class="input-box">
+          <label>Domaine d'application</label>
+          <select name="intitule" id="domaine">
+            <option value="el">Électricien</option>
+            <option value="dev">Développeur</option>
+            <option value="ing">ingénieur</option>
+            <option value="plm">plombier</option>
+            <option value="rel">Réparateur électronique</option>
+            <option value="mac">Maçon</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <textarea rows="3" placeholder="Décrivez de façon claire et conçise les services que vous proposez..." name="description" required></textarea>
+        </div>
+
+        <div class="options">
+          <!--<label><input type="checkbox"> J'ai rempli la première page d'inscription</label>-->
+          <a href="contact us.html">En absence de votre domaine ?&nbsp;Contactez-nous</a>
+        </div>
+
+        <div class="input-box">
+          <label>CV&nbsp;[Charger votre CV]</label>
+          <input type="file" id="cv" name="attestation_cv">
+        </div>
+
+        <button type="submit" class="login-btn">Soumettre</button>
+      </form>
+
+      <div class="signup-text">
+        Déjà enregistrer?<a href="login.html">&nbsp;Connectez-vous</a>
+      </div>
+    </div>
+
+    <div class="side-section">
+      voulez-vous vous enregistrez en tant que Prestataire?&nbsp;&nbsp;&nbsp;<br>Proposez vos services et gagner des contrats?&nbsp;&nbsp;&nbsp;<br>Si, oui, alors vous êtes sur la bonne page!
+    </div>
+  </div>
+
+  <footer>
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand" style="color:#fff"><span>HOME SERVICES</span><span class="highlight">&nbsp;MAINTENANCE</span></a>
+          <p style="margin-top:12px">Plateforme développée par des jeunes 100% camerounais permattant de faciliter les besoins sur place(à domicile ou sur le lieu d'intervention)</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">H</a>
+            <a href="#" aria-label="Twitter">S</a>
+            <a href="#" aria-label="Instagram">M</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">Useful Links</h4>
+          <nav class="footer-links">
+            <a href="about us.html">About us</a>
+            <a href="register.html">Inscription</a>
+            <a href="login.html">Connexion</a>
+            <a href="#">Notice légale</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Support</h4>
+          <nav class="footer-links">
+            <a href="page contact.html">Contact Us</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact information</h4>
+          <div class="footer-links">
+            <span>Douala, CAMEROUN</span>
+            <!--<span>+1(456)657-887, 0215899 12</span>-->
+            <span>dev_project_2025@yahoo.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Copyright © 2025 Agence. All rights reserved.
+    </div>
+  </footer>
+</html>

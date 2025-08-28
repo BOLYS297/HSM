@@ -1,0 +1,248 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer une tâche</title>
+    <link rel="stylesheet" href="assets/CSS/création tâche.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+    <nav class="navbar">
+      <!-- Burger menu -->
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="logo">
+        <div class="logo-HSM">
+          <img src="assets/image/logo_HSM_2.png" alt="logo">
+        </div>
+        Home Services <span class="highlight">&nbsp;Maintenance</span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="domaine.html">Besoin Prestataire</a></li>
+        <li><a href="création tâche.html" class="active">Créer une tâche</a></li>
+        <li><a href="about us.html">À propos de nous</a></li>
+        <li><a href="page contact.html">Contactez-nous</a></li>
+        <li><a href="page d'avis.html">Avis et commentaires</a></li>
+        <li class="social">
+          <a href="login.html"><i class="fas fa-user"></i></a>
+          <abbr title="recherche et classement des technicien(ne)s"><a href="page de classement.html"><i class="fas fa-search"></i></a></abbr>
+        </li>
+      </ul>
+    </nav>
+  </header>
+    <section class="hero">
+        <div class="header">
+            <h1>🏆 Créez une nouvelle tâche</h1><br>
+            <p class="subtitle">Gagnez du temps, publiez votre tâche et laissez un technicien vous aidez.</p>
+        </div>
+    </section>
+
+    <div class="publication-container">
+
+        <div class="publication-form">
+
+            <h2>Publier une nouvelle tâche</h2>
+            
+            <div class="form-group">
+                <label for="project-title">Titre de la tâche</label>
+                <input type="text" id="project-title" name="reference" placeholder="Donnez un titre à votre tâche" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="project-description">Description</label>
+                <textarea id="project-description" placeholder="Décrivez votre problème en détail..." name="description" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="project-date-intervention">Date d'intervention</label>
+                <input type="date" id="project-date-intervention" name="date_intervention" placeholder="Quand voulez-vous être dépanné ?" required>
+            </div>
+
+            <div class="form-group">
+                <label for="project-lieu-intervention">Lieu d'intervention</label>
+                <input type="texte" name="lieu_intervention" id="project-lieu-intervention" placeholder="Entrez votre position" required>
+            </div>
+            
+            <div class="form-group">
+
+                <label>Médias</label>
+
+                <div class="media-upload">
+
+                    <div class="upload-option" id="upload_image">
+                        <i class="fas fa-image"></i>
+                        <span>Image</span>
+                        <input type="file" id="image-input" accept="image/*" multiple style="display: none;">
+                    </div>
+
+                </div>
+
+                <div class="media-preview" id="media-preview"></div>
+            </div>
+            
+            <button id="publish-btn" class="btn-primary">Publier la tâche</button>
+
+        </div>
+
+        <section class="publication-service">
+            <h3>Les services déjà accomplis par nos techniciens</h3>
+
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+          // Gestion de l'upload d'images
+
+          const imageUpload = document.getElementById('upload_image');
+          const imageInput = document.getElementById('image-input');
+          const mediaPreview = document.getElementById('media-preview');
+    
+          imageUpload.addEventListener('click', () => imageInput.click());
+    
+          imageInput.addEventListener('change', handleMediaUpload);
+          function handleMediaUpload(e) {
+              const files = e.target.files;
+        
+              for (let i = 0; i < files.length; i++) {
+                  const file = files[i];
+                  const reader = new FileReader();
+            
+                    reader.onload = function(event) {
+                       const mediaItem = document.createElement('div');
+                       mediaItem.className = 'media-item';
+                
+                       if (file.type.startsWith('image/')) {
+                          mediaItem.innerHTML = `
+                          <img src="${event.target.result}" alt="Media preview">
+                          <button class="remove-media">&times;</button>`;
+                       }
+                
+                       mediaPreview.appendChild(mediaItem);
+                
+                      // Gestion de la suppression
+
+                      mediaItem.querySelector('.remove-media').addEventListener('click', () => {
+                      mediaItem.remove();
+                    });
+                };
+            
+                reader.readAsDataURL(file);
+            }
+        }
+    
+       // Gestion de la publication
+
+       const publishBtn = document.getElementById('publish-btn');
+    
+       publishBtn.addEventListener('click', function() {
+           const title = document.getElementById('project-title').value.trim();
+           const description = document.getElementById('project-description').value.trim();
+           const tags = document.getElementById('project-tags').value.trim();
+        
+           if (!title || !description) {
+              alert('Veuillez remplir le titre et la description');
+              return;
+           }
+        
+           // Récupérer les médias
+              const mediaItems = Array.from(mediaPreview.querySelectorAll('.media-item'));
+              const media = mediaItems.map(item => {
+                if (item.querySelector('img')) {
+                    return {
+                       type: 'image',
+                       src: item.querySelector('img').src
+                    };
+                } else {
+                    return {
+                       type: 'video',
+                       src: item.querySelector('video').querySelector('source').src
+                    };
+                }
+            });
+        
+            // Créer l'objet projet
+            const project = {
+               id: Date.now(),
+               title,
+               description,
+               tags: tags.split(',').map(tag => tag.trim()),
+                author: {
+                  name: "Vous",
+                  avatar: "./commentaire/default-avatar.jpg",
+                  role: "Membre"
+                },
+               date: new Date().toLocaleDateString('fr-FR'),
+               media,
+               likes: 0,
+               comments: [],
+               followers: 0
+            };
+        
+           // Sauvegarder dans le localStorage
+           saveProject(project);
+        
+          // Rediriger vers la page des projets
+          window.location.href = 'projets.html';
+        });
+    
+        function saveProject(project) {
+           let projects = JSON.parse(localStorage.getItem('projects')) || [];
+           projects.unshift(project); // Ajouter au début du tableau
+           localStorage.setItem('projects', JSON.stringify(projects));
+        }
+    });
+    </script>
+</body>
+</html>
+
+   <footer>
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand" style="color:#fff"><span>HOME SERVICES</span><span class="highlight">&nbsp;MAINTENANCE</span></a>
+          <p style="margin-top:12px">Plateforme développée par des jeunes 100% camerounais permattant de faciliter les besoins sur place(à domicile ou sur le lieu d'intervention)</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">H</a>
+            <a href="#" aria-label="Twitter">S</a>
+            <a href="#" aria-label="Instagram">M</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">Useful Links</h4>
+          <nav class="footer-links">
+            <a href="about us.html">About us</a>
+            <a href="register.html">Inscription</a>
+            <a href="login.html">Connexion</a>
+            <a href="#">Notice légale</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Support</h4>
+          <nav class="footer-links">
+            <a href="page contact.html">Contact Us</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact information</h4>
+          <div class="footer-links">
+            <span>Douala, CAMEROUN</span>
+            <!--<span>+1(456)657-887, 0215899 12</span>-->
+            <span>dev_project_2025@yahoo.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Copyright © 2025 Agence. All rights reserved.
+    </div>
+  </footer>      
+</body>
+</html>

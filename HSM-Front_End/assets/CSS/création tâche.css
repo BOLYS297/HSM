@@ -1,0 +1,400 @@
+:root{
+      --bg:#ffffff;
+      --text:#1b2430;
+      --muted:#6b7280;
+      --primary:#23e20e; /* orange */
+      --primary-ghost:rgb(236, 237, 235);
+      --card:#ffffff;
+      --shadow:0 10px 30px rgba(10,12,15,.08);
+      --radius:18px;
+      --maxw:1120px;
+      --nav-h:74px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{width:100%;max-width:var(--maxw);padding:0 24px;margin:0 auto}
+
+     /* ===== NAVBAR ===== */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  padding: 15px 20px 0px 20px;
+  z-index: 1000;
+  box-shadow: 2px 2px 20px gray;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-HSM {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo-HSM img { 
+  margin-top: -20px;
+  width: 90px;
+  border-radius: 20px;
+}
+.logo {
+  display: inline-flex;
+  color: black;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.highlight {
+  color: green;
+}
+.nav-links {
+  margin-top: -20px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.nav-links li {
+  margin: 0 15px;
+}
+.nav-links a {
+  position: relative;
+  outline-color: white;
+  text-decoration: none;
+  color: black;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+.nav-links a:hover,
+.nav-links .active {
+  color: green;
+}
+.social a {
+  margin-left: 20px;
+  font-size: 1.1rem;
+}
+
+/* ===== BURGER MENU ===== */
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.burger span {
+  height: 2.5px;
+  width: 28px;
+  background: black;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+/* ===== ANIMATION BURGER TO CROSS ===== */
+.burger.toggle span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.burger.toggle span:nth-child(2) {
+  opacity: 0;
+}
+.burger.toggle span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.header{
+    margin-top: 80px;
+    position:relative;
+    height:65vh;
+    min-height:340px;
+    display:grid;
+    place-items:center;
+    text-align:center;
+}
+.header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:url('D:/FORMATION/HSM-Front_End/assets/image/inscription.jpg') center/cover no-repeat;
+    filter:grayscale(100%);
+
+}
+.header::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.55));
+    border-radius: 20px;
+
+}
+.header h1{
+    position:relative;
+    z-index:1;
+    color:#fff;
+    font-size:56px;
+    letter-spacing:.3px;
+    margin:0;
+    font-weight:800
+}
+
+.header h1 {
+    font-size: 2.8rem;
+    color: white;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.header p{
+  display: flex;
+    color: white;
+    z-index: 1000;
+    font-weight: bold;
+    margin-top: -520px;
+}
+
+.publication-container{
+    display: flex;
+    gap: 400px;
+}
+
+.publication-form {
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 40%;
+    left: 10%;
+    position: relative;
+    top: 50px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+}
+
+.publication-form h2 {
+    color: #1b5e20;
+    margin-bottom: 40px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #424242;
+}
+
+.form-group input[type="text"], .form-group textarea , .form-group input{
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+    background-color: #f8f9fa;
+    color: #424242;
+}
+
+.form-group input[type="text"]:focus, .form-group textarea:focus, .form-group input:focus {
+    border-color: #4caf50;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    background-color: white;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.media-upload {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.upload-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #bdbdbd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: #f8f9fa;
+}
+
+.upload-option:hover {
+    border-color: #4caf50;
+    background-color: rgba(76, 175, 80, 0.1);
+    transform: translateY(-2px);
+}
+
+.upload-option i {
+    font-size: 30px;
+    color: #757575;
+    margin-bottom: 8px;
+}
+
+.upload-option span {
+    font-size: 14px;
+    color: #616161;
+}
+
+.media-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.media-item {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.media-item img, .media-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-media {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #d32f2f;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #43a047 0%, #1b5e20 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(27, 94, 32, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(27, 94, 32, 0.4);
+}
+
+.publication-service{
+    background-color: white;
+    color: #1b5e20;
+    width: 25%;
+    border-radius: 10px;
+    position: relative;
+    height: 200px;
+    top: 80px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.publication-service h3{
+    color: #1b5e20;
+    margin-bottom: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+/* FOOTER */
+    footer{background:black;color:#cbd5e1;margin-top:70px}
+    .footer-top{padding:56px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:30px}
+    .footer-title{color:#fff;margin:0 0 14px;font-weight:700}
+    .footer-links{display:grid;gap:10px}
+    .footer-brand p{color:#94a3b8}
+    .footer-social{display:flex;gap:10px;margin-top:14px}
+    .footer-social a{width:34px;height:34px;border-radius:50%;background:#11ba43;display:grid;place-items:center}
+    .footer-bottom{padding:18px 0;text-align:center;color:#94a3b8;font-size:14px}
+
+    /* UTIL */
+    .spacer{height:var(--nav-h)}
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px){
+      .grid-3{grid-template-columns:1fr;gap:18px}
+      .features{grid-template-columns:1fr 1fr}
+      .media-strip{grid-template-columns:1fr}
+      .members{grid-template-columns:repeat(2,1fr)}
+      nav ul{gap:18px}
+    }
+    @media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: -600px;
+    right: -100%;
+    height: 200vh;
+    width: 200px;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.3s ease-in-out;
+  }
+  .nav-links li {
+    margin: 20px 0;
+    font-weight: bold;
+  }
+  .burger {
+    display: flex;
+    z-index: 2000;
+  }
+  .nav-links.active {
+    right: 0;
+  }
+}
+@media (max-width: 768px) {
+    .publication-form {
+        padding: 20px;
+    }
+    
+    .media-upload {
+        flex-direction: column;
+    }
+    
+    .upload-option {
+        width: 100%;
+    }
+}
+@media (max-width: 720px){
+      .hero h1{font-size:40px}
+      .features{grid-template-columns:1fr}
+      .members{grid-template-columns:1fr}
+      header.site-header{background:rgba(15,23,42,.7);backdrop-filter:blur(6px)}
+      nav ul{display:none}
+      .header-right .social{display:none}
+    }
