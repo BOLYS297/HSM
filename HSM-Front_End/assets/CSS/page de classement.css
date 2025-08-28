@@ -116,7 +116,7 @@ header {
     content:"";
     position:absolute;
     inset:0;
-    background:url('D:/FORMATION/HSM-Front_End/assets/image/domaine.jpg') center/cover no-repeat;
+    background:url('../image/domaine.jpg') center/cover no-repeat;
     filter:grayscale(100%);
     border-radius: 20px;
 

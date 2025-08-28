@@ -120,7 +120,7 @@ header {
     content:"";
     position:absolute;
     inset:0;
-    background: url('D:/FORMATION/HSM-Front_End/assets/image/avis.jpg') center/cover no-repeat;
+    background: url('../image/avis.jpg') center/cover no-repeat;
     filter:grayscale(100%);
 }
 
