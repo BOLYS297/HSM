@@ -11,14 +11,14 @@
          $this->tablename = 'notification';
          $this->table_id = 'idnotification';
       }
-      public function create($iduser, $objet, $description, $statut){
-            $sql = "insert into $this->tablename set iduser=?, objet=?, description=?, statut=?";
-            $params = array($iduser, $objet, $description, $statut);
+      public function create($nom_complet,$objet,$description){
+            $sql = "insert into $this->tablename set nom_complet=?, objet=?, description=?";
+            $params = array($nom_complet, $objet, $description);
             $this->db->prepare($sql, $params);
       }
-      public function update($id, $iduser, $objet, $description, $statut) {
-         $sql="update $this->tablename set iduser=?, objet=?, description=?, statut=? where $this->table_id=?";
-         $params=array($iduser, $objet, $description, $statut, $id);
+      public function update($id, $iduser, $objet, $description) {
+         $sql="update $this->tablename set nom_complet=?, objet=?, description=? where $this->table_id=?";
+         $params=array($nom_complet, $objet, $description, $id);
          $this->db->prepare($sql, $params); 
       }
       public function delete($id) {

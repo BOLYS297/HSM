@@ -1,11 +1,12 @@
 <?php
    require_once '../service.php';
-
-       $email = htmlspecialchars($_POST['email']);
-       $password = htmlspecialchars($_POST['password']);
-
+ $action = $_GET['action'];  
+if($action == 'login') {
+$email = isset($_POST['email']) ? $_POST['email'] : null;
+$password = isset($_POST['password']) ? $_POST['password'] : null;
+$role = "admin";
        if(!empty($email) && !empty($password)) {
-           $login = $usersdb->readConnexion($email, $password);
+           $login = $usersdb->readConnexion($email, $password,$role);
             if($login == false) {
                 $_SESSION['erreur']= array(
                     'type' => 'danger',
@@ -19,7 +20,12 @@
                     'message' => "Bienvenue $login->prenom"
                 );
                 $_SESSION['profil']= $login;
-                header('Location:../index.phpp?view=dashboard');
+
+                if($user->role == 'Admin') {
+                header('Location:../index.php?view=dashboard');
+                }
+                
+                header('Location:../index.php?view=dashboard');
             }
-   }
+   }}
 ?>

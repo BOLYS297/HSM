@@ -30,7 +30,7 @@ if($action == 'create') {
             'type' => 'danger',
             'message' => "ERROR REQUEST : $ex->getMessage()"
         );
-        header('Location:../index.phpp?view=paiement');
+        header('Location:../index.php?view=paiement');
     }
 }
 if ($action == 'read') {
@@ -38,13 +38,13 @@ if ($action == 'read') {
     if(!empty($idpaiement)) {
         $paiements= $paiementdb->read($idpaiement);
         $_SESSION['paiements']= $paiements;
-        header('Location:../index.phpp?view=paiement');
+        header('Location:../index.php?view=paiement');
     } else {
         $_SESSION['erreur']= array(
             'type' => 'danger',
             'message' => "Echec de chargement du paiement"
         );
-        header('Location:../index.phpp?view=paiement');
+        header('Location:../index.php?view=paiement');
     }
 }
 if ($action == 'delete') {
@@ -61,7 +61,7 @@ if ($action == 'delete') {
             'message' => "ERROR REQUEST : $ex->getMessage()"
         );
     } finally {
-        header('Location:../index.phpp?view=paiement');
+        header('Location:../index.php?view=paiement');
     }
 }
     
@@ -85,7 +85,7 @@ if($action == 'update') {
             'type' => 'danger',
             'message' => "Echec de modification du paiement"
         );
-        header('Location:../index.phpp?view=paiement');
+        header('Location:../index.php?view=paiement');
     }
 }
 ?>

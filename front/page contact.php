@@ -55,7 +55,7 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div class="info-content">
                             <h3>Adresse</h3>
-                            <p>123 Rue de la Réparation, 75000 Paris</p>
+                            <p>Douala, AKWA</p>
                         </div>
                     </div>
                    
@@ -63,8 +63,8 @@
                         <i class="fas fa-phone-alt"></i>
                         <div class="info-content">
                             <h3>Téléphone</h3>
-                            <p>+33 1 23 45 67 89</p>
-                            <p>+33 6 12 34 56 78 (Urgences)</p>
+                            <p>+237 671 394 910</p>
+                            <p>+237 690 744 225 (Urgences)</p>
                         </div>
                     </div>
                    
@@ -99,40 +99,22 @@
 
                     <h2>Envoyez-nous un message</h2>
 
-                    <form id="contactForm">
+                    <form id="contactForm" action="../API/mailer.php" method="POST">
 
                         <div class="form-group">
                             <label for="name">Nom complet</label>
-                            <input type="text" id="name" class="form-control" placeholder="Votre nom" required>
+                            <input type="text" id="name" class="form-control" name="nom_complet" placeholder="Votre nom complet" required>
+                        </div>
+                         
+                        <div class="form-group">
+                            <label for="phone">Objet</label>
+                            <input type="text" id="objet" class="form-control" name="objet" placeholder="Votre objet">
                         </div>
                        
+                        
                         <div class="form-group">
-                            <label for="email">Adresse email</label>
-                            <input type="email" id="email" class="form-control" placeholder="Votre email" required>
-                        </div>
-                       
-                        <div class="form-group">
-                            <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="Votre numéro de téléphone">
-                        </div>
-                       
-                        <div class="form-group">
-
-                            <label for="subject">Sujet</label>
-
-                            <select id="subject" class="form-control" required>
-                                <option value="">Sélectionnez un sujet</option>
-                                <option value="repair">Demande de réparation</option>
-                                <option value="maintenance">Maintenance préventive</option>
-                                <option value="quote">Demande de devis</option>
-                                <option value="urgent">Intervention urgente</option>
-                                <option value="other">Autre</option>
-                            </select>
-                        </div>
-                       
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" placeholder="Décrivez votre problème ou demande" required></textarea>
+                            <label for="message">Description</label>
+                            <textarea id="description" class="form-control" name="description" placeholder="Renseignez une description" required></textarea>
                         </div>
                        
                         <button type="submit" class="btn">Envoyer le message</button>

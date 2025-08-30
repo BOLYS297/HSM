@@ -11,16 +11,16 @@
          $this->tablename = 'tache';
          $this->table_id = 'idtache';
       }
-      public function create($iduser,$iduser_tech,$reference,$intitule,$description,$date_intervention,$image,$lieu_intervention,$statut) {
-       $sql = "insert into $this->tablename set iduser=?,iduser_tech=?, reference=?, intitule=?, description=?, date_intervention=?, image=?, lieu_intervention=? statut=?";
-            $params = array($iduser,$iduser_tech,$reference,$intitule,$description,$date_intervention,$image,$lieu_intervention,$statut);
+      public function create($intitule,$description,$email_client,$date_intervention,$lieu_intervention,) {
+       $sql = "insert into $this->tablename set  intitule=?, description=?, email_client=?, date_intervention=?,lieu_intervention=?";
+            $params = array($intitule,$description,$email_client,$date_intervention,$lieu_intervention);
             $this->db->prepare($sql, $params);
             
       }
-      public function update($id,$iduser,$iduser_tech,$reference,$intitule,$description,$email_tech,$email_client,$date_intervention,$image,$lieu_intervention,$statut) {
-         $sql="update $this->tablename set iduser=?,iduser_tech=?, reference=?, intitule=?, description=?, email_tech=?, email_client=?, date_intervention=?, image=?, lieu_intervention=? statut=? where $this->table_id=?";
-         $params=array($iduser,$iduser_tech,$reference,$intitule,$description,$email_tech,$email_client,$date_intervention,$image,$lieu_intervention,$statut,$id); 
-         $this->db->prepare($sql,$params);  
+      public function update($id,$intitule,$description,$email_client,$date_intervention,$lieu_intervention) {
+         $sql="update $this->tablename set intitule=?, description=?, email_client=?, date_intervention=?, lieu_intervention=? where $this->table_id=?";
+         $params=array($intitule,$description,$email_client,$date_intervention,$lieu_intervention,$id);
+         $this->db->prepare($sql,$params);
       }
       public function delete($id) {
             $sql = "delete from $this->tablename where $this->table_id=?";

@@ -1,48 +1,38 @@
 <?php 
 require_once '../service.php';
 
+
 // Chemin vers les images de profil utilisateur
 $path_dest= '../../storage/photo/'; 
 
 $action= $_GET['action'];
+// die(var_dump($_POST));
 
 if($action == 'create') {
     try {
-        $iduser= $_POST['iduser'];
-        $iduser_tech= $_POST['iduser_tech'];
-        $reference= $_POST['reference'];
+    
         $intitule= $_POST['intitule'];
         $description=$_POST['description'];
-        $email_tech= $_POST['email_tech'];
         $email_client= $_POST['email_client'];
         $date_intervention= $_POST['date_intervention'];
-        $image= '';
         $lieu_intervention= $_POST['lieu_intervention'];
-        $statut= $_POST['statut'];
-    if(isset($_FILES['photo']) == true && $_FILES['photo']['size'] > 0) {
-                $image= $paquet->upload_image($_FILES['photo'], 'user', 300, 300, $path_dest);
-            }    
-
-    if(!empty($iduser) && !empty($iduser_tech) && !empty($reference) && !empty($intitule) && !empty($description) && !empty($email_tech) && !empty($email_client) && !empty($date_intervention) && !empty($image) && !empty($lieu_intervention) && !empty($statut)){
-        $tachedb->create($iduser, $iduser_tech, $reference, $intitule, $description, $email_tech, $email_client, $date_intervention, $image, $lieu_intervention, $statut);
+    
+        // if(isset($_FILES['photo']) == true && $_FILES['photo']['size'] > 0) {
+        //         $image= $paquet->upload_image($_FILES['photo'], 'user', 300, 300, $path_dest);
+        //     }    
+        $tachedb->create($intitule, $description, $email_client, $date_intervention, $lieu_intervention);
         $_SESSION['erreur']= array(
             'type' => 'success',
             'message' => "Tâche ajoutée avec succès"
         );
-        header('Location:../index.phpp?view=tache');
-    } else {
-        $_SESSION['erreur']= array(
-            'type' => 'danger',
-            'message' => "Echec d'ajout de la tâche"
-        );
-        header('Location:../index.phpp?view=tache');
+        header('Location:../../front/creationtache');
     }
-    } catch(Exception $ex) {
+     catch(Exception $ex) {
         $_SESSION['erreur']= array(
             'type' => 'danger',
             'message' => "ERROR REQUEST : $ex->getMessage()"
         );
-        header('Location:../index.phpp?view=tache');
+        header('Location:../../front/creationtache');
     }
 }
 if ($action == 'read') {
@@ -50,13 +40,13 @@ if ($action == 'read') {
     if(!empty($idtache)) {
         $taches= $tachedb->read($idtache);
         $_SESSION['taches']= $taches;
-        header('Location:../index.phpp?view=tache');
+        header('Location:../../front/creationtache');
     } else {
         $_SESSION['erreur']= array(
             'type' => 'danger',
             'message' => "Echec de chargement de la  tâche"
         );
-        header('Location:../index.phpp?view=tache');
+        header('Location:../../front/creationtache');
     }
 }
 if ($action == 'delete') {
@@ -75,25 +65,25 @@ if ($action == 'delete') {
         );
     }
     finally {
-        header('Location:../index.phpp?view=tache');
+        header('Location:../../front/creationtache');
     }
 }
     
 if($action == 'update') {
     $idtache= $_GET['idtache'];
-    if(!empty($iduser) && !empty($iduser_tech) && !empty($reference) && !empty($intitule) && !empty($description) && !empty($email_tech) && !empty($email_client) && !empty($date_intervention) && !empty($image) && !empty($lieu_intervention) && !empty($statut)){
-        $tachedb->update($idtache, $iduser, $iduser_tech, $reference, $intitule, $description, $email_tech, $email_client, $date_intervention, $image, $lieu_intervention, $statut);
+    if(!empty($idtache) && !empty($intitule) && !empty($description) && !empty($email_client) && !empty($date_intervention) && !empty($lieu_intervention)){
+        $tachedb->update($idtache, $intitule, $description, $email_client, $date_intervention, $lieu_intervention);
         $_SESSION['erreur']= array(
             'type' => 'success',
             'message' => "Tâche modifiée avec succès"
         );
-        header('Location:../index.phpp?view=tache');
+        header('Location:../../front/creationtache');
     } else {
         $_SESSION['erreur']= array(
             'type' => 'danger',
             'message' => "Echec de modification de la tâche"
         );
-        header('Location:../index.phpp?view=tache');
+        header('Location:../../front/creationtache');
     }
 }
 ?>

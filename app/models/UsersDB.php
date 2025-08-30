@@ -18,7 +18,6 @@
       }
       public function update($id, $nom_complet,$email,$telephone,$adresse,$cni,$profil,$role,$password,$domaine_tech,$attestation_cv) {
             $sql = "update $this->tablename set nom_complet=?, email=?, telephone=?, adresse=?, cni=?, profil=?, role=?, password=?, domaine_tech=?, attestation_cv=? where $this->table_id=?";
-
             $params = array($nom_complet,$email,$telephone,$adresse,$cni,$profil,$role,$password,$domaine_tech,$attestation_cv, $id);
             $this->db->prepare($sql, $params); 
       }  
@@ -40,9 +39,9 @@
             return $this->db->getDatas($req, false);
      }
      
-      public function readConnexion($email, $password) {
+      public function readConnexion($email, $password,$role) {
       $sql = "select * from $this->tablename where email=? and password=? and role=?";
-      $params = array($email, $password);
+      $params = array($email, $password,$role);
       $req = $this->db->prepare($sql, $params);
       return $this->db->getDatas($req, true);
 }

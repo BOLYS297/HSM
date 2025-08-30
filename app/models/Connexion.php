@@ -9,7 +9,7 @@ class Connexion
 
     public function __construct()
     {
-        $this->dsn = 'mysql:host=localhost;dbname=hsm;port=3308;charset=utf8';
+        $this->dsn = 'mysql:host=localhost;dbname=hsmdb;port=3308;charset=utf8';
         $this->username = 'root';
         $this->password = '';
     }

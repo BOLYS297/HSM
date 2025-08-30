@@ -23,7 +23,7 @@
         Home Services <span class="highlight">&nbsp;Maintenance</span>
       </div>
       <ul class="nav-links" id="nav-links">
-        <li><a href="../index.phpp">Accueil</a></li>
+        <li><a href="../index.php">Accueil</a></li>
         <li><a href="domaine.php">Besoin Prestataire</a></li>
         <li><a href="about us.php">À propos de nous</a></li>
         <li><a href="page contact.php">Contactez-nous</a></li>

@@ -4,16 +4,16 @@ require_once '../service.php';
 $path_dest= '../../storage/photo/'; 
 
 $action= $_GET['action'];
-
+// var_dump($_POST);
 if($action == 'create') {
     try {
-        $iduser= $_POST['iduser'];
+        $nom_complet= $_POST['nom_complet'];
         $objet= $_POST['objet'];
         $description= $_POST['description'];
-        $statut= $_POST['statut'];
-    
-    if (!empty($iduser) && !empty($objet) && !empty($description) && !empty($statut)){
-        $notificationdb->create($iduser,$objet,$description,$statut);
+        $notificationdb->create($nom_complet,$objet,$description);
+
+    if (!empty($nom_complet) && !empty($email) && !empty($telephone) && !empty($sujet) && !empty($message)){
+        $notificationdb->create($nom_complet,$email,$telephone,$sujet,$message);
         $_SESSION['erreur']=array(
             'type'=>'succes',
             'message'=>'notification ajoutee avec succes'
@@ -23,7 +23,7 @@ if($action == 'create') {
             'type'=>'danger',
             'message'=>'echec de l\'ajout de la notification'
         );
-        header('Location:../index.php?view=notification');
+        header('Location:../../front/page contact.php');
     }
     }
         catch(Exception $ex) {
@@ -31,7 +31,7 @@ if($action == 'create') {
             'type' => 'danger',
             'message' => "ERROR REQUEST : $ex->getMessage()"
         );
-        header('Location:../index.php?view=notification');
+        header('Location:../../front/page contact.php');
     }
 }
 if ($action == 'read') {
@@ -67,7 +67,7 @@ if ($action == 'delete') {
             'message' => "ERROR REQUEST : $ex->getMessage()"
         );
     } finally {
-        header('Location:../index.phpp?view=notification');
+        header('Location:../index.php?view=notification');
     }
 }
     
@@ -90,14 +90,14 @@ if($action == 'update') {
                 'type'=>'danger',
                 'message'=>'echec de la modification de la notification'
             );
-            header('Location:../index.phpp?view=notification');
+            header('Location:../index.php?view=notification');
         }
     } catch (Exception $ex) {
         $_SESSION['erreur']= array(
             'type' => 'danger',
             'message' => "ERROR REQUEST : $ex->getMessage()"
         );
-        header('Location:../index.phpp?view=notification');
+        header('Location:../index.php?view=notification');
     }
 }
 ?>

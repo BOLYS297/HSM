@@ -1,161 +1,160 @@
-<?php 
+<?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 require_once '../service.php';
 
 // Chemin vers les images de profil utilisateur
-$path_dest= '../../storage/photo/'; 
+$path_dest = '../../storage/photo/';
 
-$action= $_GET['action'];
+$action = $_GET['action'];
+var_dump($_POST);
+// die();
 
-if($action == 'create') {
+if ($action == 'create') {
     try {
-        $nom_complet = isset($_POST['nom_complet']) ? $_POST['nom_complet'] : '';
-        $email= isset($_POST['email']) ? $_POST['email'] : '';
-        $telephone= isset($_POST['telephone']) ? $_POST['telephone'] : '';
-        $adresse= isset($_POST['adresse']) ? $_POST['adresse'] : '';
-        $cni= isset($_FILES['cni']) ? $_FILES['cni'] : '';
-        $profil= isset($_FILES['profil']) ? $_FILES['profil'] : '';
-        $role= isset($_POST['role']) ? $_POST['role'] : '';
-        $password= isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : '';
-        $domaine_tech= isset($_POST['domaine_tech']) ? $_POST['domaine_tech'] : '';
-        $attestation_cv= isset($_FILES['attestation_cv']) ? $_FILES['attestation_cv'] : '';
-        $photo= '';
+        // Récupération des champs textes
+        $nom_complet   = $_POST['nom_complet'];
+        $email         = $_POST['email'];
+        $telephone     = $_POST['telephone'];
+        $adresse       = $_POST['adresse'];
+        $cni           = null;
+        $profil        = null;
+        $role          = $_POST['role'];
+        $password      = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $domaine_tech  = $_POST['domaine_tech'];
+        // Fichiers uploadés
+        $attestation_cv= null;
+        // $photo = '';
 
-        // Recherche pour la connexion en fonction de l'email et
-        // du mot de passe original
-        $data= $usersdb->readConnexion2($email, $password);
+        // Vérification si l'utilisateur existe déjà
+        $data = $usersdb->readConnexion2($email,$password); 
 
-        if($data != false) {
-            $_SESSION['erreur']= array(
+        if ($data != false) {
+            $_SESSION['erreur'] = array(
                 'type' => 'warning',
-                'message' => "Email et mot de passe déjà existant"
+                'message' => "Un utilisateur avec cet email et ce mot de passe existe déjà"
             );
-        }
-        else {
-            if(isset($_FILES['profil']) == true && $_FILES['profil']['size'] > 0) {
-                $photo= $paquet->upload_image($_FILES['profil'], 'user', 300, 300, $path_dest);
-            }
-
-            // On crée l'utilisateur avec le mot de passe hashé : $password_h
-            $usersdb->create($nom_complet, $email, $telephone, $adresse, $cni, $profil, $role, $password, $domaine_tech, $attestation_cv, $photo);
-            $_SESSION['erreur']= array(
+        } else {
+            // Upload photo de profil
+            // if ($profil && $profil['size'] > 0) {
+            //     $photo = $paquet->upload_image($profil, 'user', 300, 300, $path_dest);
+            // }
+            // Création de l'utilisateur
+            $usersdb->create($nom_complet,$email,$telephone,$adresse,$cni,$profil,$role,$password,$domaine_tech,$attestation_cv);
+            $_SESSION['erreur'] = array(
                 'type' => 'success',
-                'message' => "L'utilisateur $nom_complet a été ajoutée avec succès"
+                'message' => "L'utilisateur $nom_complet a été ajouté avec succès"
             );
         }
-        if (!$result) {
-    echo "Erreur SQL : " . $mysqli->error;
-}
-    }
-    catch(Exception $ex) {
-        $_SESSION['erreur']= array(
+    } catch (Exception $ex) {
+        $_SESSION['erreur'] = array(
             'type' => 'danger',
-            'message' => "ERROR REQUEST : $ex->getMessage()"
+            'message' => "ERROR REQUEST : " . $ex->getMessage()
         );
-    }
-    finally {
-        header('Location:../index.php?view=user');
+    } finally {
+        header('Location: ../../front/page profil utilisateur.php');
     }
 }
 
-
-if($action == 'read') {
+if ($action == 'read') {
     header('Content-Type: application/json');
     try {
-        $users_id= $_GET['users_id'];
-        $data= $usersdb->read($users_id);
+        $users_id = $_GET['users_id'] ?? 0;
+        $data = $usersdb->read($users_id);
         http_response_code(200);
         echo json_encode($data);
-    }
-    catch(Exception $ex) {
+    } catch (Exception $ex) {
         http_response_code(500);
         echo json_encode(array(
             'type' => 'danger',
-            'message' => "ERROR REQUEST : $ex->getMessage()"
+            'message' => "ERROR REQUEST : " . $ex->getMessage()
         ));
     }
 }
 
-
-
-if($action == 'update') {
+if ($action == 'update') {
     try {
-        $iduser= $_GET['iduser'];
-        $user= $usersdb->read($iduser);
+        $iduser       = $_GET['iduser'] ?? 0;
+        $user         = $usersdb->read($iduser);
 
-        $nom_complet= $_POST['nom_complet'];
-        $email= $_POST['email'];
-        $telephone= $_POST['telephone'];
-        $adresse= $_POST['adresse'];
-        $cni= $_POST['cni'];
-        $profil= $_POST['profil'];
-        $role= $_POST['role'];
-        $password= password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $domaine_tech= $_POST['domaine_tech'];
-        $attestation_cv= $_POST['attestation_cv'];
-        $photo= '';       
+        $nom_complet  = $_POST['nom_complet'] ?? $user->nom_complet;
+        $email        = $_POST['email'] ?? $user->email;
+        $telephone    = $_POST['telephone'] ?? $user->telephone;
+        $adresse      = $_POST['adresse'] ?? $user->adresse;
+        $role         = $_POST['role'] ?? $user->role;
+        $domaine_tech = $_POST['domaine_tech'] ?? $user->domaine_tech;
 
-        $data= $usersdb->readConnexion2($email, $password);
+        $password     = $_POST['password'] ?? '';
+        $password_h   = $password ? password_hash($password, PASSWORD_DEFAULT) : $user->password;
 
-        if($data != false && $data->iduser != $user->iduser) {
-            $_SESSION['erreur']= array(
-                'type' => 'warning',
-                'message' => "Email et mot de passe déjà existant"
-            );
-        }
-        else {
-            if(isset($_FILES['photo']) == true && $_FILES['photo']['size'] > 0) {
+        $cni          = $_FILES['cni'] ?? null;
+        $profil       = $_FILES['profil'] ?? null;
+        $attestation_cv = $_FILES['attestation_cv'] ?? null;
+
+        $photo = $user->photo;
+
+        if (isset($_FILES['profil']) && $_FILES['profil']['size'] > 0) {
+            if ($user->photo && file_exists($path_dest . $user->photo)) {
                 unlink($path_dest . $user->photo);
-                $photo= $paquet->upload_image($_FILES['photo'], 'user', 300, 300, $path_dest);
             }
-
-            $usersdb->update($iduser, $nom_complet, $email, $telephone, $adresse, $cni, $profil, $role, $password, $domaine_tech, $attestation_cv, $photo);
-            $_SESSION['erreur']= array(
-                'type' => 'success',
-                'message' => "L'utilisateur $nom_complet a été modifiée avec succès"
-            );
+            $photo = $paquet->upload_image($_FILES['profil'], 'user', 300, 300, $path_dest);
         }
-    }
-    catch(Exception $ex) {
-        $_SESSION['erreur']= array(
-            'type' => 'danger',
-            'message' => "ERROR REQUEST : $ex->getMessage()"
+
+        $usersdb->update(
+            $iduser,
+            $nom_complet,
+            $email,
+            $telephone,
+            $adresse,
+            $cni ? $cni['name'] : $user->cni,
+            $profil ? $profil['name'] : $user->profil,
+            $role,
+            $password_h,
+            $domaine_tech,
+            $attestation_cv ? $attestation_cv['name'] : $user->attestation_cv,
+            $photo
         );
-    }
-    finally {
-        header('Location:../index.php?view=user');
-    }
-}
 
-
-
-
-if($action == 'delete') {
-    try {
-        $idusers= $_GET['iduser'];
-        $user= $usersdb->read($idusers);
-
-        unlink($path_dest . $user->photo);
-        $usersdb->delete($idusers);
-        $_SESSION['erreur']= array(
+        $_SESSION['erreur'] = array(
             'type' => 'success',
-            'message' => "L'utilisateur $nom_complet a été supprimée avec succès"
+            'message' => "L'utilisateur $nom_complet a été modifié avec succès"
         );
-    }
-    catch(Exception $ex) {
-        $_SESSION['erreur']= array(
+
+    } catch (Exception $ex) {
+        $_SESSION['erreur'] = array(
             'type' => 'danger',
-            'message' => "ERROR REQUEST : $ex->getMessage()"
+            'message' => "ERROR REQUEST : " . $ex->getMessage()
         );
-    }
-    finally {
+    } finally {
         header('Location:../index.php?view=user');
+        exit;
     }
 }
 
+if ($action == 'delete') {
+    try {
+        $idusers = $_GET['iduser'] ?? 0;
+        $user = $usersdb->read($idusers);
 
+        if ($user->photo && file_exists($path_dest . $user->photo)) {
+            unlink($path_dest . $user->photo);
+        }
 
+        $usersdb->delete($idusers);
 
-?>
+        $_SESSION['erreur'] = array(
+            'type' => 'success',
+            'message' => "L'utilisateur $user->nom_complet a été supprimé avec succès"
+        );
+    } catch (Exception $ex) {
+        $_SESSION['erreur'] = array(
+            'type' => 'danger',
+            'message' => "ERROR REQUEST : " . $ex->getMessage()
+        );
+    } finally {
+        header('Location:../index.php?view=user');
+        exit;
+    }
+}

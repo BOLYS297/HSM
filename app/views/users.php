@@ -1,6 +1,6 @@
 <?php
 $users= $usersdb->readAll();
-$controllerName="controllerUsers.php"; 
+$controllerName="controllerUsers.php";
 ?>
 
 
@@ -46,8 +46,6 @@ $controllerName="controllerUsers.php";
                                 <th>password</th>
                                 <th>domaine_tech</th>
                                 <th>attestation_cv</th>
-                                <th>created_at</th>
-                                <th>updated_at</th>
                                 <th>Actions</th>
 
                             </tr>
@@ -81,7 +79,7 @@ $controllerName="controllerUsers.php";
                                 <td><?= $user->password ?></td>
                                 <td><?= $user->domaine_tech ?></td>
                                 <td><?= $user->attestation_cv ?></td>
-
+                                
                                 <td>
                                     <button aria-label="Modifier" class="btn btn-sm btn-warning btn-update" data-bs-toggle="modal" data-bs-target="#formModal" onclick="editForm(<?= $user->iduser ?>)">
                                         <i class="fas fa-edit"></i>
@@ -232,7 +230,7 @@ $controllerName="controllerUsers.php";
                 document.querySelector("#statut").value= data.statut;
                 document.querySelector("#password").value= data.password;
                 if(data.profil != null && data.profil != '') {
-                    document.querySelector("#profil").innerHTML= `<img src="controller/files/user/${data.profil}" />`;
+                    document.querySelector("#profil").innerHTML= `<img src="../../storage/photo/${data.profil}" />`;
                 }
                 document.querySelector("#form_edit").setAttribute('action', `${controllerName}?action=update`);
             }

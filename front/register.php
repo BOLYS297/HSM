@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
-    <link rel="stylesheet" href="assets/CSS/register.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <script defer src="assets/Js/register.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription</title>
+  <link rel="stylesheet" href="assets/CSS/register.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script defer src="assets/Js/register.js"></script>
 </head>
+
 <body>
-      <!-- ====== NAVBAR ====== -->
-     <!-- ====== NAVBAR ====== -->
+  <!-- ====== NAVBAR ====== -->
   <header>
     <nav class="navbar">
       <!-- Burger menu -->
@@ -37,77 +38,106 @@
       </ul>
     </nav>
   </header>
+
+  <!-- ====== FORMULAIRE ====== -->
   <div class="form-container">
-    <form id="registerForm" class="loginForm" novalidate method="POST" action="../app/controller/controllerUsers.php?action=create" enctype="multipart/form-data">
+    <form id="registerForm" class="loginForm"  method="POST"  action="../app/controller/controllerUsers.php?action=create"  enctype="multipart/form-data">
+
       <h2>Inscription</h2>
+
       <div class="group">
         <div class="form-group">
-           <label>Nom complet</label>
-           <i class="fas fa-user icon"></i>
-           <input type="text" id="fullName" name="nom_complet" required placeholder="DOUANLA Faarel">
-           <div class="error" id="nameError">Le nom ne peut contenir que des lettres.</div>
+          <label>Nom complet</label>
+          <i class="fas fa-user icon"></i>
+          <input type="text" id="fullName" name="nom_complet" required placeholder="DOUANLA Faarel">
         </div>
         <div class="form-group">
-           <label>Email</label>
-           <i class="fas fa-envelope icon"></i>
-           <input type="email" id="email" name="email" required placeholder="jiy@gmail.com">
-           <div class="error" id="emailError">Veuillez entrer un email valide.</div>
-         </div>
+          <label>Email</label>
+          <i class="fas fa-envelope icon"></i>
+          <input type="email" id="email" name="email" required placeholder="jiy@gmail.com">
+        </div>
       </div>
+
       <div class="group">
-          <div class="form-group">
-             <label>Téléphone</label>
-             <i class="fas fa-phone icon"></i>
-             <input type="text" id="phone" name="telephone" required placeholder="+237-655-345-458">
-             <div class="error" id="phoneError">Le numéro doit contenir uniquement des chiffres et éventuellement le signe +.</div>
-           </div>
-           <div class="form-group">
-           <label>Adresse</label>
-           <i class="fa-solid fa-location-dot icon"></i>
-           <input type="text" id="location" name="adresse" required placeholder="Gare-routière">
-         </div>
+        <div class="form-group">
+          <label>Téléphone</label>
+          <i class="fas fa-phone icon"></i>
+          <input type="text" id="phone" name="telephone" required placeholder="+237-655-345-458">
+        </div>
+        <div class="form-group">
+          <label>Adresse</label>
+          <i class="fa-solid fa-location-dot icon"></i>
+          <input type="text" id="location" name="adresse" required placeholder="Gare-routière">
+        </div>
       </div>
+
       <div class="form-group">
-        <label>CNI (À jour)[pdf recto-verseau]</label>
-        <input type="file" id="cni" name="cni" required>
-        <div class="error" id="cniError">Veuillez uploader une copie de la CNI.</div>
+        <label>CNI (À jour) </label>
+        <input type="file" id="cni" name="cni" accept="image/*" required>
       </div>
+
       <div class="form-group">
-        <label>Photo de profil&nbsp;[Renseigner une photo réel de vous]</label>
-        <input type="file" id="profil" name="profil" required>
-        <div class="error" id="cniError">Veuillez uploader une photo de vous même par mesure d'identification.</div>
+        <label>Photo de profil</label>
+        <input type="file" id="profil" name="profil" accept="image/*" required>
       </div>
+
       <div class="form-group">
         <label>Rôle</label>
-        <select name="role" id="role">
+        <select name="role" id="role" required>
+          <option value="">-- Sélectionnez --</option>
           <option value="Client">Client</option>
           <option value="Prestataire">Prestataire</option>
+          <!-- <option value="Admin">Admin</option> -->
         </select>
       </div>
+
+      <!-- Champs qui apparaissent seulement si rôle = Prestataire -->
+      <div class="form-group" id="domaineTechGroup" style="display:none;">
+        <label>Domaine technique</label>
+        <select name="domaine_tech" id="domaine_tech">
+          <option value="">-- Choisissez votre domaine --</option>
+          <option value="Plomberie">Plomberie</option>
+          <option value="Électricité">Électricité</option>
+          <option value="Informatique">Informatique</option>
+          <option value="Menuiserie">Menuiserie</option>
+          <option value="Mécanique">Mécanique</option>
+          <option value="Climatisation">Climatisation</option>
+          <option value="Soudure">Soudure</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="attestationCvGroup" style="display:none;">
+        <label>Attestation ou CV (PDF)</label>
+        <input type="file" name="attestation_cv" id="attestation_cv" accept="application/pdf">
+      </div>
+
       <div class="form-group">
-        <label>Password</label>
+        <label>Mot de passe</label>
         <i class="fas fa-lock icon"></i>
         <input type="password" id="password" name="password" required placeholder="Home@458">
-        <div class="error" id="passwordError">Le mot de passe doit contenir min. 6 caractères, dont une majuscule, un chiffre et un caractère spécial[@$!%*?&].</div>
       </div>
-      <button type="submit">S'inscrire</button>
+
+      <input type="submit" value="S'inscrire">
+
       <div class="connexion">
-      <p>Déjà inscrit ? <a href="login.php" class="connexion1">Connectez-vous</a></p>
+        <p>Déjà inscrit ? <a href="login.php" class="connexion1">Connectez-vous</a></p>
       </div>
     </form>
   </div>
-   <footer>
+
+  <!-- ====== FOOTER ====== -->
+  <footer>
     <div class="container footer-top">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="brand" style="color:#fff"><span>HOME SERVICES</span><span class="highlight">&nbsp;MAINTENANCE</span></a>
-          <p style="margin-top:12px">Plateforme développée par des jeunes 100% camerounais permattant de faciliter les besoins sur place(à domicile ou sur le lieu d'intervention)</p>
-          <div class="footer-social">
-            <a href="#" aria-label="Facebook">H</a>
-            <a href="#" aria-label="Twitter">S</a>
-            <a href="#" aria-label="Instagram">M</a>
-            <a href="#" aria-label="YouTube">▶</a>
-          </div>
+          <a href="#" class="brand" style="color:#fff">
+            <span>HOME SERVICES</span><span class="highlight">&nbsp;MAINTENANCE</span>
+          </a>
+          <p style="margin-top:12px">
+            Plateforme développée par des jeunes 100% camerounais permettant de faciliter les besoins sur place
+            (à domicile ou sur le lieu d'intervention)
+          </p>
         </div>
         <div>
           <h4 class="footer-title">Useful Links</h4>
@@ -128,7 +158,6 @@
           <h4 class="footer-title">Contact information</h4>
           <div class="footer-links">
             <span>Douala, CAMEROUN</span>
-            <!--<span>+1(456)657-887, 0215899 12</span>-->
             <span>dev_project_2025@yahoo.com</span>
           </div>
         </div>
@@ -138,6 +167,18 @@
       Copyright © 2025 Agence. All rights reserved.
     </div>
   </footer>
-  
+
+  <!-- Petit script JS pour afficher les champs du prestataire -->
+  <!-- <script>
+    document.getElementById('role').addEventListener('change', function () {
+      if (this.value === 'Prestataire') {
+        document.getElementById('domaineTechGroup').style.display = 'block';
+        document.getElementById('attestationCvGroup').style.display = 'block';
+      } else {
+        document.getElementById('domaineTechGroup').style.display = 'none';
+        document.getElementById('attestationCvGroup').style.display = 'none';
+      }
+    });
+  </script> -->
 </body>
 </html>

@@ -17,14 +17,14 @@
                 'type' => 'success',
                 'message' => 'Devis ajouté avec succès'
             );
-            header('Location:../index.phpp?view=devis');
+            header('Location:../index.php?view=devis');
         }
         else {
             $_SESSION['erreur']= array(
                 'type' => 'danger',
                 'message' => 'Echec d\'ajout du devis'
             );
-            header('Location:../index.phpp?view=devis');
+            header('Location:../index.php?view=devis');
         }
     }
      
@@ -36,13 +36,13 @@
                 'type' => 'success',
                 'message' => 'Devis modifié avec succès'
             );
-            header('Location:../index.phpp?view=devis');
+            header('Location:../index.php?view=devis');
         } else {
             $_SESSION['erreur'] = array(
                 'type' => 'danger',
                 'message' => 'Echec de modification du devis'
             );
-            header('Location:../index.phpp?view=devis');
+            header('Location:../index.php?view=devis');
         }
     }
     if ($action == 'delete') {
@@ -59,7 +59,7 @@
                 'message' => "ERROR REQUEST : $ex->getMessage()"
             );
         } finally {
-            header('Location:../index.phpp?view=devis');
+            header('Location:../index.php?view=devis');
         }
     }
 ?>

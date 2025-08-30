@@ -41,28 +41,28 @@ password.addEventListener("input", () => {
 });
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
+  // e.preventDefault();
 
   // Vérifie si tous les champs sont remplis
   if (!fullName.value || !email.value || !phone.value || !cni.value || !password.value) {
     alert("Tous les champs doivent être remplis !");
-    return;
+    return false;
   }
 
   // Vérifie s’il y a encore des erreurs visibles
   if (document.querySelectorAll(".error[style='display: block;']").length > 0) {
     alert("Veuillez corriger les erreurs avant de continuer.");
-    return;
+    return false;
   }
-
+  return true;
   // Récupère le rôle choisi au moment de la soumission
-  const role = document.getElementById("role").value;
+  // const role = document.getElementById("role").value;
 
-  if (role === "Client") {
-    alert("Utilisateur ajouté avec succès ✅");
-  } else if (role === "Prestataire") {
-    // Redirection vers une autre page
-    window.location.href = "domaine.php";
-    return;
-  }
+  // if (role === "Client") {
+  //   alert("Utilisateur ajouté avec succès ✅");
+  // } else if (role === "Prestataire") {
+  //   // Redirection vers une autre page
+  //   window.location.href = "domaine.php";
+  //   return;
+  // }
 });

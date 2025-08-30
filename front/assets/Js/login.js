@@ -16,10 +16,10 @@ loginEmail.addEventListener("input", () => {
     regex.test(loginEmail.value) ? "none" : "block";
 });
 
-loginPassword.addEventListener("input", () => {
-  document.getElementById("loginPasswordError").style.display =
-    loginPassword.value.length >= 6 ? "none" : "block";
-});
+//  loginPassword.addEventListener("input", () => {
+//    document.getElementById("loginPasswordError").style.display =
+//      loginPassword.value.length >= 6 ? "none" : "block";
+//  });
 
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();

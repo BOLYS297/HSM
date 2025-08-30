@@ -38,21 +38,21 @@
   </header>
   <section class="back">
   <div class="form-container">
-    <form class="loginForm" action="../app/index.php?view=dashboard" novalidate>
+    <form class="loginForm" action="../app/controller/connexionController.php?action=login"  method="POST" novalidate>
       <h2>Connexion</h2>
       <div class="form-group">
         <label>Email</label>
         <i class="fas fa-envelope icon"></i>
-        <input type="email" id="loginEmail" placeholder="Entrez votre adresse mail.">
+        <input type="email" id="loginEmail" name="email"  placeholder="Entrez votre adresse mail.">
         <div class="error" id="loginEmailError">Veuillez entrer un email valide.</div>
       </div>
       <div class="form-group">
         <label>Mot de passe</label>
         <i class="fas fa-lock icon"></i>
-        <input type="password" id="loginPassword" required placeholder="Entrez votre mot de passe.">
+        <input type="password" id="loginPassword" name="password" required placeholder="Entrez votre mot de passe.">
         <div class="error" id="loginPasswordError">Le mot de passe doit contenir au moins 6 caractères.</div>
       </div>
-      <a href="page profil utilisateur.php"><button type="submit">Se connecter</button></a>
+      <button type="submit">Se connecter</button>
       <div class="inscrire">
       <p>Pas encore inscrit ? <a href="register.php" class="inscrire1">Inscription</a></p>
       </div>

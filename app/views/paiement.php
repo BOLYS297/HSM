@@ -41,8 +41,7 @@ $controllerName="controllerPaiement.php";        // A CHANGER
                                 <th>motif</th>
                                 <th>intitule</th>
                                 <th>montant</th>
-                                <th>created_at</th>
-                                <th>updated_at</th>
+                                
                             </tr>
                         </thead>
                         <tbody>

@@ -1,6 +1,9 @@
 <?php
+
+// session_start();
 $tache = $tachedb->readAll();
-$controllerName="controllerTache.php";         // A CHANGER
+$controllerName="controllerTache.php";        
+// session_start();
 ?>
 
 
@@ -36,19 +39,12 @@ $controllerName="controllerTache.php";         // A CHANGER
                         <thead>
                             <tr>
                                 <th>idtache</th>
-                                <th>iduser</th>                                <!-- <th>iduser</th> -->
-                                <th>iduser_tech</th>
-                                <th>reference</th>
-                                <th>intitule</th>
+                                <th>iduser</th>
+                                <th>intitule</th>  
                                 <th>description</th>
-                                <th>email_tech</th>
                                 <th>email_client</th>
                                 <th>date_intervention</th>
-                                <th>image</th>
                                 <th>lieu_intervention</th>
-                                <th>statut</th>
-                                <th>created_at</th>
-                                <th>updated_at</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -61,24 +57,17 @@ $controllerName="controllerTache.php";         // A CHANGER
                             ?>
                             <tr>
                                 <td><?= $tch->idtache ?></td>
-                                <td><?= $tch->upload_image ?></td>  
-                                <td><?= $tch->idintitule ?></td>           
-                                <td><?= $tch->iddescription ?></td>                                  
-                                <td><?= $tch->date_intervention ?></td>  
-                                <td><?= $tch->uploadimage ?></td> 
-                                <td><?= $tch->email_tech ?></td>
+                                <td><?= $tch->iduser ?></td>  
+                                <td><?= $tch->intitule ?></td>
+                                <td><?= $tch->description ?></td>                                  
                                 <td><?= $tch->email_client ?></td>
+                                <td><?= $tch->date_intervention ?></td>
                                 <td><?= $tch->lieu_intervention ?></td>
-                                <td><?= $tch->statut ?></td>
-                                <td><?= $tch->created_at ?></td>
-                                <td><?= $tch->updated_at ?></td>
-
-
                                 <td>
-                                    <button aria-label="Modifier" class="btn btn-sm btn-warning btn-update" data-bs-toggle="modal" data-bs-target="#formModal" onclick="editForm(<?= $med->all_medicament_id ?>)">      // A CHANGER
+                                    <button aria-label="Modifier" class="btn btn-sm btn-warning btn-update" data-bs-toggle="modal" data-bs-target="#formModal" onclick="editForm(<?= $tch->idtache ?>)">  
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button aria-label="Supprimer" class="btn btn-sm btn-danger btn-delete" onclick="deleteForm(<?= $med->all_medicament_id ?>)">       // A CHANGER
+                                    <button aria-label="Supprimer" class="btn btn-sm btn-danger btn-delete" onclick="deleteForm(<?= $tch->idtache ?>)">   
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </td>

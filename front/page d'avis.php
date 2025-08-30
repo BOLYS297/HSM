@@ -144,8 +144,8 @@
             <form id="reviewForm" method="POST" action="../app/controller/controllerAvis.php?action=create">
         
                 <div class="form-group">
-                    <label for="reviewer-name">Votre nom *</label>
-                    <input type="text" id="reviewer-name" required>
+                    <label for="reviewer-name">Votre identifiant</label>
+                    <input type="number" id="reviewer-name" required>
                 </div>
 
                 <div class="form-group">

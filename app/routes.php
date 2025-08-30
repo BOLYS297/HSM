@@ -21,5 +21,5 @@ if (isset($_GET['view']) == true) {
         $view = "$folder_views/404.php";
     }
 } else {
-    header("Location:../index.phpp");
+    header("Location:../index.php");
 }

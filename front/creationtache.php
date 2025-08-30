@@ -1,10 +1,11 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créer une tâche</title>
     <link rel="stylesheet" href="assets/CSS/création tâche.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https:cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
@@ -22,7 +23,7 @@
         Home Services <span class="highlight">&nbsp;Maintenance</span>
       </div>
       <ul class="nav-links" id="nav-links">
-        <li><a href="../index.phpp">Accueil</a></li>
+        <li><a href="../index.php">Accueil</a></li>
         <li><a href="domaine.php">Besoin Prestataire</a></li>
         <li><a href="creationtache.php" class="active">Créer une tâche</a></li>
         <li><a href="about us.php">À propos de nous</a></li>
@@ -45,158 +46,171 @@
     <div class="publication-container">
 
         <div class="publication-form">
-<form action="../app/controller/controllerTache.php?action=create" method="POST">
+        <form action="../app/controller/controllerTache.php?action=create" method="POST">
             <h2>Publier une nouvelle tâche</h2>
             
+    
             <div class="form-group">
-                <label for="project-title">Titre de la tâche</label>
-                <input type="text" id="project-title" name="reference" placeholder="Donnez un titre à votre tâche" required>
+                <label for="project-title">intitule</label>
+                <input type="text" id="project-title" name="intitule" placeholder="Donnez un titre à votre tâche" required>
+            </div>
+
+            <div class="form-group">
+                <label for="project-title">description</label>
+                <textarea id="project-description"  name="description" placeholder="Décrivez votre problème en détail..." required></textarea>
+            </div>
+
+          
+
+            <div class="form-group">
+                <label for="project-date-intervention">email_client</label>
+                <input type="email" id="project-date-intervention" name="email_client" placeholder="donner votre email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="project-lieu-intervention">date_intervention</label>
+                <input type="date" name="date_intervention" id="project-lieu-intervention" placeholder="Entrez la date d'intervention" required>
             </div>
             
             <div class="form-group">
-                <label for="project-description">Description</label>
-                <textarea id="project-description" placeholder="Décrivez votre problème en détail..." name="description" required></textarea>
-            </div>
 
-            <div class="form-group">
-                <label for="project-date-intervention">Date d'intervention</label>
-                <input type="date" id="project-date-intervention" name="date_intervention" placeholder="Quand voulez-vous être dépanné ?" required>
-            </div>
+                <!-- <label>Médias</label> -->
 
-            <div class="form-group">
-                <label for="project-lieu-intervention">Lieu d'intervention</label>
-                <input type="texte" name="lieu_intervention" id="project-lieu-intervention" placeholder="Entrez votre position" required>
-            </div>
-            
-            <div class="form-group">
-
-                <label>Médias</label>
-
-                <div class="media-upload">
+                <!-- <div class="media-upload">
 
                     <div class="upload-option" id="upload_image">
                         <i class="fas fa-image"></i>
                         <span>Image</span>
-                        <input type="file" id="image-input" accept="image/*" multiple style="display: none;" name="image">
+                        <input type="file" id="image-input" accept="image/*" name="photo">
                     </div>
 
-                </div>
+                </div> -->
 
                 <div class="media-preview" id="media-preview"></div>
             </div>
+            <div class="form-group">
+                <label for="project-date-intervention">lieu_intervention</label>
+                <input type="text" id="project-date-intervention" name="lieu_intervention" placeholder="ou voulez-vous être dépanné ?" required>
+            </div>
+
+            <!-- <div class="form-group">
+                <label for="project-lieu-intervention">statut</label>
+                <input type="text" name="statut" id="project-lieu-intervention" placeholder="Entrez le statut" required>
+            </div> -->
             
-            <button id="publish-btn" class="btn-primary">Publier la tâche</button>
-
+            
+            <button id="publish-btn" class="btn-primary" type="submit">Publier la tâche</button>
+ 
         </div>
-
+</form>
         <section class="publication-service">
             <h3>Les services déjà accomplis par nos techniciens</h3>
 
         </section>
     </div>
-</form>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        // document.addEventListener('DOMContentLoaded', function() {
 
-          // Gestion de l'upload d'images
+        //     //Gestion de l'upload d'images
 
-          const imageUpload = document.getElementById('upload_image');
-          const imageInput = document.getElementById('image-input');
-          const mediaPreview = document.getElementById('media-preview');
+        //    const imageUpload = document.getElementById('upload_image');
+        //    const imageInput = document.getElementById('image-input');
+        //    const mediaPreview = document.getElementById('media-preview');
     
-          imageUpload.addEventListener('click', () => imageInput.click());
+        //    imageUpload.addEventListener('click', () => imageInput.click());
     
-          imageInput.addEventListener('change', handleMediaUpload);
-          function handleMediaUpload(e) {
-              const files = e.target.files;
+        //    imageInput.addEventListener('change', handleMediaUpload);
+        //    function handleMediaUpload(e) {
+        //        const files = e.target.files;
         
-              for (let i = 0; i < files.length; i++) {
-                  const file = files[i];
-                  const reader = new FileReader();
+        //        for (let i = 0; i < files.length; i++) {
+        //            const file = files[i];
+        //            const reader = new FileReader();
             
-                    reader.onload = function(event) {
-                       const mediaItem = document.createElement('div');
-                       mediaItem.className = 'media-item';
+        //              reader.onload = function(event) {
+        //                 const mediaItem = document.createElement('div');
+        //                 mediaItem.className = 'media-item';
                 
-                       if (file.type.startsWith('image/')) {
-                          mediaItem.innerHTML = `
-                          <img src="${event.target.result}" alt="Media preview">
-                          <button class="remove-media">&times;</button>`;
-                       }
+        //                 if (file.type.startsWith('image/')) {
+        //                    mediaItem.innerHTML = `
+        //                    <img src="${event.target.result}" alt="Media preview">
+        //                    <button class="remove-media">&times;</button>`;
+        //                 }
                 
-                       mediaPreview.appendChild(mediaItem);
+        //                 mediaPreview.appendChild(mediaItem);
                 
-                      // Gestion de la suppression
+        //                 //Gestion de la suppression
 
-                      mediaItem.querySelector('.remove-media').addEventListener('click', () => {
-                      mediaItem.remove();
-                    });
-                };
+        //                mediaItem.querySelector('.remove-media').addEventListener('click', () => {
+        //                mediaItem.remove();
+        //              });
+        //          };
             
-                reader.readAsDataURL(file);
-            }
-        }
+        //          reader.readAsDataURL(file);
+        //      }
+        //  }
     
-       // Gestion de la publication
+        //Gestion de la publication
 
-       const publishBtn = document.getElementById('publish-btn');
+        const publishBtn = document.getElementById('publish-btn');
     
-       publishBtn.addEventListener('click', function() {
-           const title = document.getElementById('project-title').value.trim();
-           const description = document.getElementById('project-description').value.trim();
-           const tags = document.getElementById('project-tags').value.trim();
+        publishBtn.addEventListener('click', function() {
+            // const title = document.getElementById('project-title').value.trim();
+            // const description = document.getElementById('project-description').value.trim();
+            const tags = document.getElementById('project-tags').value.trim();
         
-           if (!title || !description) {
-              alert('Veuillez remplir le titre et la description');
-              return;
-           }
+            // if (!title || !description) {
+            //    alert('Veuillez remplir le titre et la description');
+            //    return;
+            // }
         
-           // Récupérer les médias
-              const mediaItems = Array.from(mediaPreview.querySelectorAll('.media-item'));
-              const media = mediaItems.map(item => {
-                if (item.querySelector('img')) {
-                    return {
-                       type: 'image',
-                       src: item.querySelector('img').src
-                    };
-                } else {
-                    return {
-                       type: 'video',
-                       src: item.querySelector('video').querySelector('source').src
-                    };
-                }
-            });
+            //  Récupérer les médias
+               const mediaItems = Array.from(mediaPreview.querySelectorAll('.media-item'));
+               const media = mediaItems.map(item => {
+                 if (item.querySelector('img')) {
+                     return {
+                        type: 'image',
+                        src: item.querySelector('img').src
+                     };
+                 } else {
+                     return {
+                        type: 'video',
+                        src: item.querySelector('video').querySelector('source').src
+                     };
+                 }
+             });
         
-            // Créer l'objet projet
-            const project = {
-               id: Date.now(),
-               title,
-               description,
-               tags: tags.split(',').map(tag => tag.trim()),
-                author: {
-                  name: "Vous",
-                  avatar: "./commentaire/default-avatar.jpg",
-                  role: "Membre"
-                },
-               date: new Date().toLocaleDateString('fr-FR'),
-               media,
-               likes: 0,
-               comments: [],
-               followers: 0
-            };
+              // Créer l'objet projet
+             const project = {
+                id: Date.now(),
+                title,
+                description,
+                tags: tags.split(',').map(tag => tag.trim()),
+                 author: {
+                   name: "Vous",
+                   avatar: "./commentaire/default-avatar.jpg",
+                   role: "Membre"
+                 },
+                date: new Date().toLocaleDateString('fr-FR'),
+                media,
+                likes: 0,
+                comments: [],
+                followers: 0
+             };
         
-           // Sauvegarder dans le localStorage
-           saveProject(project);
+            //  Sauvegarder dans le localStorage
+            saveProject(project);
         
-          // Rediriger vers la page des projets
-          window.location.href = 'projets.php';
-        });
+            // Rediriger vers la page des projets
+           window.location.href = 'creationtache.php';
+         });
     
-        function saveProject(project) {
-           let projects = JSON.parse(localStorage.getItem('projects')) || [];
-           projects.unshift(project); // Ajouter au début du tableau
-           localStorage.setItem('projects', JSON.stringify(projects));
-        }
+         function saveProject(project) {
+            let projects = JSON.parse(localStorage.getItem('projects')) || [];
+             projects.unshift(project);  //Ajouter au début du tableau
+            localStorage.setItem('projects', JSON.stringify(projects));
+         }
     });
     </script>
 </body>
